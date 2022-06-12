@@ -1,6 +1,6 @@
 ---------------------------------------------------------
 
-![ProjectLogo](/img/ProjectLogo_assignment2.png)
+![ProjectLogo](Assignment2/img/ProjectLogo_assignment2.png)
 
 -----------------------------------------------------
 
