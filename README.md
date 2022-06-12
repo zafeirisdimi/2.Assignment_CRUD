@@ -5,13 +5,14 @@
 -----------------------------------------------------
 
 # Assignment2_CRUD
+
 You  are  required  to  produce  a  solution  that  implementsa  CRUD  using  MVC methodologiesfor the entity Trainers.
 
 
-
 <details><summary><h2>Tasks</h2></summary>
-<p>
-     
+
+<p><h3>You    need    to    submit    all    the    produced    files    in    a    zip    file    named    by your_name_individual_partb.zip</h3>
+    
     <ul>
     <li> <h4>Create Trainer [20marks]</h4> </li>
     <li> <h4>Read Trainer details [20marks] </h4> </li>
@@ -19,8 +20,9 @@ You  are  required  to  produce  a  solution  that  implementsa  CRUD  using  MV
     <li> <h4>Delete Trainer [20marks] </h4></li>
     <li> <h4>Use of MVCtechnologies [20marks]:</h4></li>
   </ul>
-  <h3>You    need    to    submit    all    the    produced    files    in    a    zip    file    named    by your_name_individual_partb.zip</h3>
     </p>
+
+
 </details>
 
 
