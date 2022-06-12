@@ -6,7 +6,7 @@
 
 # Assignment2_CRUD
 
-You  are  required  to  produce  a  solution  that  implementsa  CRUD  using  MVC methodologiesfor the entity Trainers.
+You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</strong> using <strong>MVC</strong> methodologies for the entity <strong>Trainers</strong>.
 
 <details><summary><h2>Tasks</h2></summary>
 <p><h3>You    need    to    submit    all    the    produced    files    in    a    zip    file    named    by your_name_individual_partb.zip</h3>
@@ -48,14 +48,6 @@ You  are  required  to  produce  a  solution  that  implementsa  CRUD  using  MV
    
 <!--te-->
 
-------------------------------------------------------------------------------------------------------------------------------
-
-
-## SQL Schema
-![SQL SCHEMA](Prototype/img/SQLSCHEMA.png)
-
-
-----------------------------------------------------------------------------------------------------------------------------------
 ## ApplicationDatabase
 ### ApplicationContext
 ## Migrations
@@ -65,17 +57,24 @@ You  are  required  to  produce  a  solution  that  implementsa  CRUD  using  MV
 
 ### Trainer
 
+| Type           | Properties       | Methods | Required | Min| Max | 
+| :---:          |     :---:        |  :---:  |  :---:  | :---: | :---: | 
+| int            | ID     | get, set   | ☑️ | 1 | no-limit | 
+| string            | FirstName     | get, set   |☑️ | 10 | 50 |
+| string         | LastName      | get, set    |☑️| 10 | 50 |
+| string         | PhoneNumber       | get, set    |☑️| 10 | 20 |
+| int         | Salary       | get, set    |☑️| 1000 | 3000 |
+
+
+## Interfaces
+### IPerson
 | Type           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
 | int            | ID     | get, set   |
 | string            | FirstName     | get, set   |
 | string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
-
-
-## Interfaces
-
-### IPerson
+| string         | PhoneNumber       | get, set    |
+| int         | Salary       | get, set    |
 
 ## View
 
