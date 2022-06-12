@@ -34,12 +34,20 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
     * [ApplicationContext](#applicationcontext)
 * [Migrations](#migrations)
     * [Configurations](#configurations)
-* [Models](#)
+* [Model](#)
    * [Trainer](#trainer)
+* [Controler]
+   * [TrainerControler]
 * [Interfaces](#interfaces)
    * [IPerson](#iperson)
-* [Services](#services)
-   * [MockupRepository](#mockuprepository)
+* [Repository](#services)
+   * [TrainerRepository](#mockuprepository)
+* [View]
+   * [Trainer]
+     * [Create](#create)
+     * [Read](#Read)
+     * [Edit](#Edit)
+     * [Delete](#Delete)
 * [Installation](#installation)
 * [Technologies](#technologies)
 
@@ -52,7 +60,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ### ApplicationContext
 ## Migrations
 ### Configurations
-## Models
+## Model
 
 
 ### Trainer
@@ -66,6 +74,18 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | int         | Salary       | get, set    |☑️| 1000 | 3000 |
 
 
+#### Validation Error Messages
+
+| ErrorMessageCode         | ErrorMessage       | 
+| :---:          |     :---:        | 
+| int            | ID     | 
+| string            | FirstName     | 
+| string         | LastName      |
+| string         | PhoneNumber       | 
+| int         | Salary       | 
+
+
+
 ## Interfaces
 ### IPerson
 | Type           | Properties       | Methods |
@@ -76,8 +96,16 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | get, set    |
 | int         | Salary       | get, set    |
 
-## View
 
+## Repository
+### TrainerRepository
+## View
+### Create
+### Read
+### Edit
+### Delete
+## Controler
+### TrainerControler
 ## Installation
 ## Technologies
 
