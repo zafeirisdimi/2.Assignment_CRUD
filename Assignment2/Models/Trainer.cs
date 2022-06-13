@@ -10,7 +10,7 @@ namespace Assignment2.Models
     public class Trainer
     {
         [Key]
-        public int TrainerId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "FirstName Required")]
         [StringLength(30, MinimumLength = 5,ErrorMessage = "Validation Problem in FirstName")]
@@ -31,6 +31,11 @@ namespace Assignment2.Models
         [Required(ErrorMessage = "Salary Required")]
         [Range(1000,2000)]
         public int Salary { get; set; }
+        public DateTime HireDate { get; set; }
+
+        public string PhotoUrl { get; set; }
+
+
 
     }
 }

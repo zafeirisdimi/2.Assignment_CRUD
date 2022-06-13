@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Assignment2.MyContext;
+using Assignment2.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,10 +11,20 @@ namespace Assignment2.Controllers
 {
     public class TrainerController : Controller
     {
+
+        private ApplicationContext db = new ApplicationContext();
+        private TrainerRepository trainerRepository;
+
+
+        public TrainerController()
+        {
+            trainerRepository = new TrainerRepository(db);
+        }
         // GET: Trainer
         public ActionResult Index()
         {
-            return View();
+            var trainers = trainerRepository.GetAll();
+            return View(trainers);
         }
 
         public ActionResult Create()
@@ -29,9 +42,27 @@ namespace Assignment2.Controllers
             return View();
         }
 
-        public ActionResult Update()
+
+        
+        public ActionResult Details(int? id)
         {
-            return View();
+            var trainer = trainerRepository.GetById(id);
+
+            if (trainer == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return View(trainer);
+        }
+
+        protected override void Dispose(bool disposing) // katastrogi tou context
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            
+            base.Dispose(disposing);
         }
 
     }

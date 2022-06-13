@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Assignment2.Models.Trainer>
+
 <div class="container">
     <div class="popover-header">
         <h1>Trainer Index works</h1>
@@ -13,34 +14,44 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Id</th>
+                    <th>Photo</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Phone</th>
                     <th>Salary</th>
                     <th>Email</th>
+                    <th>Hired(y/m/d)</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>sfsdfsdf</td>
-                    <td>fsdsfsf</td>
-                    <td>fsdfsdf</td>
-                    <td>ddddddd</td>
-                    <td>sssssssss</td>
-                    <td>
-                        <a href="/Trainer/Edit" class="btn btn-outline-warning">Edit</a>
-                        <a href="/Trainer/Delete" class="btn btn-outline-danger">Delete</a>
-                    </td>
-                </tr>
+                @foreach (var trainer in Model)
+                {
+                    <tr>
+                        <td>@trainer.Id</td>
+                        <td><img src="@trainer.PhotoUrl" width="30" alt="@trainer.FirstName+''+@trainer.LastName"/></td>
+                        <td>@trainer.FirstName</td>
+                        <td>@trainer.LastName</td>
+                        <td>@trainer.Phone</td>
+                        <td>@trainer.Salary</td>
+                        <td>@trainer.Email</td>
+                        <td>@trainer.HireDate.ToString("yyyy/m/d")</td>
+                        <td>
+                            <a href="/Trainer/Details?id=@trainer.Id" class="btn btn-outline-info">Details</a>
+                            <a href="/Trainer/Edit" class="btn btn-outline-warning">Edit</a>
+                            <a href="/Trainer/Delete" class="btn btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+
             </tbody>
-
         </table>
-
     </div>
 
     <div class="blockquote-footer bg-light">
-        <p>Total rows: 10</p>
+        <p>Total rows: 5</p>
+    </div>
+    <div>
+        <a href="/Home/Index" class="btn btn-outline-dark" target="_blank" title="BACK">BACK</a>
     </div>
 </div>
