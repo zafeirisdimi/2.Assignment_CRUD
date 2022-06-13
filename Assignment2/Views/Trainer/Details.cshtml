@@ -1,8 +1,46 @@
 ﻿@model Assignment2.Models.Trainer
 
+<div class="container">
+    <div class="card-header">
+        <h2><span class="badge badge-info"> Details of @Model.LastName</span></h2>
+    </div>
 
+    <div class="main">
+        <table class="table table-responsive-md">
+            <thead class="thead-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Photo</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Phone</th>
+                    <th>Salary</th>
+                    <th>Email</th>
+                    <th>Hired(y/m/d)</th>
 
-<h2>Details</h2>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Id</td>
+                    <td><img src="@Model.PhotoUrl" width="50" /></td>
+                    <td>@Model.FirstName</td>
+                    <td>@Model.LastName</td>
+                    <td>@Model.Phone</td>
+                    <td>@Model.Salary</td>
+                    <td>@Model.Email</td>
+                    <td>@Model.HireDate.ToString("yyyy/m/d")</td>
 
-<strong></strong>
+                </tr>
 
+            </tbody>
+        </table>
+    </div>
+
+        <div class="blockquote-footer bg-light">
+            <p>Total rows: 5</p>
+        </div>
+        <div>
+            <a href="/Trainer/" class="btn btn-outline-dark" target="_self" title="BACK">BACK</a>
+        </div>
+    </div>

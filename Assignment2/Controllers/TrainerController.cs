@@ -32,6 +32,17 @@ namespace Assignment2.Controllers
             return View();
         }
 
+        public ActionResult Details(int? id)
+        {
+            var trainer = trainerRepository.GetById(id);
+
+            if (trainer == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return View(trainer);
+        }
+
         public ActionResult Edit()
         {
             return View();
@@ -44,16 +55,7 @@ namespace Assignment2.Controllers
 
 
         
-        public ActionResult Details(int? id)
-        {
-            var trainer = trainerRepository.GetById(id);
-
-            if (trainer == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            }
-            return View(trainer);
-        }
+       
 
         protected override void Dispose(bool disposing) // katastrogi tou context
         {
