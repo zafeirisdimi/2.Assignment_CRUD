@@ -1,51 +1,23 @@
 ---------------------------------------------------------
 
-![ProjectLogo](/img/ProjectLogo_assignment2.png)
+![ProjectLogo](Assignment2/img/ProjectLogo_assignment2.png)
 
 -----------------------------------------------------
 
-# Assignment 2
-Assignment to practise SQL fundamentals connected with C# and Entity Framework
+# Assignment2_CRUD
 
+You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</strong> using <strong>MVC</strong> methodologies for the entity <strong>Trainers</strong>.
 
-
-<details><summary><h2>Description</h2></summary>
-<p>
-     <h3>Following PART A you need to implement the below functionality:</h3> 
-    <ul>
-    <li> <h4>Design the ERD of your system and verify it through an online tool such as https://sqldbm.com/(it requires a free account) [15 marks]</h4> </li>
-    <li> <h4>Identify  any  other  tables  you  need  based  on  your  implementation  and construct them [15 marks]</h4> </li>
-    <li> <h4>Make the schema of a database that can keep data for the main entities of the  assignment  and  name  the  tables  as:  Students,  Trainers,  Assignments, Courses [15 marks]</h4></li>
-    <li> <h4>Populate the tables of the database with enough data [10 marks]</h4></li>
-    <li> <h4>You need to produce sql queries that output the following [19marks in total]:</h4></li>
-    <ul>
-    <li> <h4>A list of all the students [2marks]</h4></li>
-    <li> <h4>A list of all the trainers[2marks]</h4></li>
-    <li> <h4>A list of all the assignments[2marks]</h4></li>
-    <li> <h4>A list of all the courses[2marks]</h4></li>
-    <li> <h4>All the students per course[2marks]</h4></li>
-    <li> <h4>All the trainers per course[2marks]</h4></li>
-    <li> <h4>All the assignments per course[2marks]</h4></li>
-    <li> <h4>All the assignments per course per student[2marks]</h4></li>
-    <li> <h4>A list of students that belong to more than one courses[3marks]</h4></li>
-    </ul>
-  <li> <h3>You also need to produce a small project that [26 marks]</h3></li>
-  <ul>
-      <li>makes  a  connection  to  the  database and  executes  the  above  sql queries[9 marks]</li>
-      <li>makes a connection to the database and inserts inputdata from the keyboard to the following tables,</li>
-      <ul>
-       <li>students[2 marks]</li>
-       <li>trainers[2 marks]</li>
-       <li>assignments[2 marks]</li>
-       <li>courses[2 marks]</li>
-       <li>students per course[3 marks]</li>
-       <li>trainers per course[3 marks]</li>
-       <li>assignments per student per course[3 marks]</li>
-      </ul>
+<details><summary><h2>Tasks</h2></summary>
+<p><h3>You    need    to    submit    all    the    produced    files    in    a    zip    file    named    by your_name_individual_partb.zip</h3>
+<ul>
+    <li> <h3>Create Trainer [20marks]</h3> </li>
+    <li> <h3>Read Trainer details [20marks] </h3> </li>
+    <li> <h3>Update Trainer details [20marks]</h3></li>
+    <li> <h3>Delete Trainer [20marks] </h3></li>
+    <li> <h3>Use of MVC technologies [20marks]</h3></li>
   </ul>
-  </ul>
-  <h3>You    need    to    submit    all    the    produced    files    in    a    zip    file    named    by your_name_individual_partb.zip</h3>
-    </p>
+</p>
 </details>
 
 
@@ -57,172 +29,129 @@ Assignment to practise SQL fundamentals connected with C# and Entity Framework
 <!--ts-->
 
 
-
 * [ApplicationDatabase](#applicationdatabase)
     * [ApplicationContext](#applicationcontext)
 * [Migrations](#migrations)
     * [Configurations](#configurations)
-* [Models](#)
-    * [Enum](#enum)
-      * [Choice](#choice)
-      * [Difficulty](#difficulty)
-      * [Notification](#notification)
-      * [Stream](#stream)
-      * [Subject](#subject)
-      * [Typecourse](#typecourse)
-   * [Assignment](#assignment)
-   * [City](#city)
-   * [Course](#course)
-   * [Grade](#grade)
-   * [State](#state)
-   * [Student](#student)
+* [Model](#model)
    * [Trainer](#trainer)
+* [Controller](#controller)
+    * [TrainerController](#trainercontroller)
 * [Interfaces](#interfaces)
-   * [ISimpleModel](#isimplemodel)
    * [IPerson](#iperson)
-* [Services](#services)
-   * [MockupRepository](#mockuprepository)
-   * [MainMenu](#mainmenu)
-   * [MyInsertDB](#myinsertdb)
+* [Repository](#repository)
+   * [TrainerRepository](#trainerrepository)
+* [View](#view)
+   * [Trainer_view](#trainer_view)
+     * [Create](#create)
+     * [Read](#read)
+     * [Edit](#edit)
+     * [Delete](#delete)
 * [Installation](#installation)
 * [Technologies](#technologies)
 
   
-   
-   
 <!--te-->
 
-------------------------------------------------------------------------------------------------------------------------------
+## ApplicationDatabase ##
+### ApplicationContext ###
+
+----------------------------------------------------------------------------------------------------------
+
+## Migrations ##
+### Configurations ###
+
+----------------------------------------------------------------------------------------------------------
+
+## Model ##
 
 
-## SQL Schema
-![SQL SCHEMA](Prototype/img/SQLSCHEMA.png)
+### Trainer ###
+
+| Type           | Properties       | Methods | Required | Min| Max | 
+| :---:          |     :---:        |  :---:  |  :---:  | :---: | :---: | 
+| int            | ID     | get, set   | ☑️ | 1 | no-limit | 
+| string            | FirstName     | get, set   |☑️ | 10 | 50 |
+| string         | LastName      | get, set    |☑️| 10 | 50 |
+| string         | PhoneNumber       | get, set    |☑️| 10 | 20 |
+| int         | Salary       | get, set    |☑️| 1000 | 3000 |
 
 
-----------------------------------------------------------------------------------------------------------------------------------
-## ApplicationDatabase
-### ApplicationContext
-## Migrations
-### Configurations
-## Models
-### Student
+#### Validation Error Messages ####
 
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| int            | ID     | get, set   |
-| string            | FirstName     | get, set   |
-| string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
+| ErrorMessageCode         | ErrorMessage       | 
+| :---:          |     :---:        | 
+| int            | ID     | 
+| string            | FirstName     | 
+| string         | LastName      |
+| string         | PhoneNumber       | 
+| int         | Salary       | 
 
+##### [Back to >Top<](#assignment2_crud) #####
+-------------------------------------------------------------------------------------------------------------------
 
-
-### Trainer
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| int            | ID     | get, set   |
-| string            | FirstName     | get, set   |
-| string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
-
-### Course
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| int            | ID     | get, set   |
-| string            | FirstName     | get, set   |
-| string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
-
-### Assignment
+## Interfaces ##
+### IPerson ###
 
 | Type           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
 | int            | ID     | get, set   |
 | string            | FirstName     | get, set   |
 | string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
+| string         | PhoneNumber       | get, set    |
+| int         | Salary       | get, set    |
 
-### City
+-------------------------------------------------------------------------------------------------------------------
 
-| Type           | Properties       | Methods |
+## Repository ##
+### TrainerRepository ###
+
+| Method           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
 | int            | ID     | get, set   |
 | string            | FirstName     | get, set   |
 | string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
-### State
+| string         | PhoneNumber       | get, set    |
+| int         | Salary       | get, set    |
 
-| Type           | Properties       | Methods |
+##### [Back to >Top<](#assignment2_crud) #####
+------------------------------------------------------------------------------------------------------------------
+## View ##
+
+### Create ###
+-
+------------------------------------------------------------------------------------------------------------------
+### Read ###
+-
+
+##### [Back to >Top<](#assignment2_crud) #####
+------------------------------------------------------------------------------------------------------------------
+### Edit ###
+-
+------------------------------------------------------------------------------------------------------------------
+### Delete ###
+-
+##### [Back to >Top<](#assignment2_crud) #####
+------------------------------------------------------------------------------------------------------------------
+## Controller ##
+### TrainerController ###
+
+| Method           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
-| int            | ID     | get, set   |
-| string            | FirstName     | get, set   |
-| string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
+| Action            | ID     | get, set   |
+| Action            | FirstName     | get, set   |
+| Action         | LastName      | get, set    |
+| Action         | PhoneNumber       | get, set    |
+| Action         | Salary       | get, set    |
 
-### Grade
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| int            | ID     | get, set   |
-| string            | FirstName     | get, set   |
-| string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
-
-### Enum
-#### Choice
-
-#### Difficulty
-
-#### Notification
-
-#### Stream
-
-#### Subject
-
-#### TypeCourse
-
-## Interfaces
-
-### ISimpleModel
-
-### IPerson
-
-## Services 
-
-### MockupRepository
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| int            | ID     | get, set   |
-| string            | FirstName     | get, set   |
-| string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
-
-### MainMenu
-
-### MyInsertDB
-
-| Type           | Properties       | Methods |
-| :---:          |     :---:        |  :---:  |
-| int            | ID     | get, set   |
-| string            | FirstName     | get, set   |
-| string         | LastName      | get, set    |
-| double         | PhoneNumber       | get, set    |
-
-## Views
+## Installation ##
 
 
+## Technologies ##
 
-### AssignmentView
+- Entity Framework 6
+- ASP.NET MVC
+- Visual Studio 2022
+- Microsoft SQL Server Management Studio 2018
 
-### CourceView
-
-### StudentView
-
-### TrainerView
-
-## Installation
-## Technologies
-
-##### [Back to >Top<](#Individual_Project_PartB) #####
+##### [Back to >Top<](#assignment2_crud) #####
