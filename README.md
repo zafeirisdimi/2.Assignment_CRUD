@@ -15,7 +15,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
     <li> <h3>Read Trainer details [20marks] </h3> </li>
     <li> <h3>Update Trainer details [20marks]</h3></li>
     <li> <h3>Delete Trainer [20marks] </h3></li>
-    <li> <h3>Use of MVCtechnologies [20marks]</h3></li>
+    <li> <h3>Use of MVC technologies [20marks]</h3></li>
   </ul>
 </p>
 </details>
@@ -29,41 +29,44 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 <!--ts-->
 
 
-
 * [ApplicationDatabase](#applicationdatabase)
     * [ApplicationContext](#applicationcontext)
 * [Migrations](#migrations)
     * [Configurations](#configurations)
-* [Model](#)
+* [Model](#model)
    * [Trainer](#trainer)
-* [Controler]
-   * [TrainerControler]
+* [Controller](#controller)
+    * [TrainerController](#trainercontroller)
 * [Interfaces](#interfaces)
    * [IPerson](#iperson)
-* [Repository](#services)
-   * [TrainerRepository](#mockuprepository)
-* [View]
-   * [Trainer]
+* [Repository](#repository)
+   * [TrainerRepository](#trainerrepository)
+* [View](#view)
+   * [Trainer_view](#trainer_view)
      * [Create](#create)
-     * [Read](#Read)
-     * [Edit](#Edit)
-     * [Delete](#Delete)
+     * [Read](#read)
+     * [Edit](#edit)
+     * [Delete](#delete)
 * [Installation](#installation)
 * [Technologies](#technologies)
 
   
-   
-   
 <!--te-->
 
-## ApplicationDatabase
-### ApplicationContext
-## Migrations
-### Configurations
-## Model
+## ApplicationDatabase ##
+### ApplicationContext ###
+
+----------------------------------------------------------------------------------------------------------
+
+## Migrations ##
+### Configurations ###
+
+----------------------------------------------------------------------------------------------------------
+
+## Model ##
 
 
-### Trainer
+### Trainer ###
 
 | Type           | Properties       | Methods | Required | Min| Max | 
 | :---:          |     :---:        |  :---:  |  :---:  | :---: | :---: | 
@@ -74,7 +77,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | int         | Salary       | get, set    |☑️| 1000 | 3000 |
 
 
-#### Validation Error Messages
+#### Validation Error Messages ####
 
 | ErrorMessageCode         | ErrorMessage       | 
 | :---:          |     :---:        | 
@@ -84,10 +87,12 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | 
 | int         | Salary       | 
 
+##### [Back to >Top<](#assignment2_crud) #####
+-------------------------------------------------------------------------------------------------------------------
 
+## Interfaces ##
+### IPerson ###
 
-## Interfaces
-### IPerson
 | Type           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
 | int            | ID     | get, set   |
@@ -96,17 +101,57 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | get, set    |
 | int         | Salary       | get, set    |
 
+-------------------------------------------------------------------------------------------------------------------
 
-## Repository
-### TrainerRepository
-## View
-### Create
-### Read
-### Edit
-### Delete
-## Controler
-### TrainerControler
-## Installation
-## Technologies
+## Repository ##
+### TrainerRepository ###
 
-##### [Back to >Top<](#Assignment2_CRUD) #####
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| int            | ID     | get, set   |
+| string            | FirstName     | get, set   |
+| string         | LastName      | get, set    |
+| string         | PhoneNumber       | get, set    |
+| int         | Salary       | get, set    |
+
+##### [Back to >Top<](#assignment2_crud) #####
+------------------------------------------------------------------------------------------------------------------
+## View ##
+
+### Create ###
+-
+------------------------------------------------------------------------------------------------------------------
+### Read ###
+-
+
+##### [Back to >Top<](#assignment2_crud) #####
+------------------------------------------------------------------------------------------------------------------
+### Edit ###
+-
+------------------------------------------------------------------------------------------------------------------
+### Delete ###
+-
+##### [Back to >Top<](#assignment2_crud) #####
+------------------------------------------------------------------------------------------------------------------
+## Controller ##
+### TrainerController ###
+
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| Action            | ID     | get, set   |
+| Action            | FirstName     | get, set   |
+| Action         | LastName      | get, set    |
+| Action         | PhoneNumber       | get, set    |
+| Action         | Salary       | get, set    |
+
+## Installation ##
+
+
+## Technologies ##
+
+- Entity Framework 6
+- ASP.NET MVC
+- Visual Studio 2022
+- Microsoft SQL Server Management Studio 2018
+
+##### [Back to >Top<](#assignment2_crud) #####
