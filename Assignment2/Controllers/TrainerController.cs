@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Assignment2.Controllers
 {
     public class TrainerController : Controller
@@ -48,15 +49,25 @@ namespace Assignment2.Controllers
             return View();
         }
 
-        public ActionResult Delete()
+
+
+        [HttpPost]
+        public ActionResult Delete(int? id)
         {
-            return View();
+            var trainer = trainerRepository.GetById(id);
+            if (trainer == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            trainerRepository.Delete(trainer);
+
+            return RedirectToAction("Index");
         }
 
-
         
-       
-
+        
+        
+  
         protected override void Dispose(bool disposing) // katastrogi tou context
         {
             if (disposing)

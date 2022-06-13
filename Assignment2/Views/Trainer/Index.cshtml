@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="popover-header">
-        <h1>Trainer Index works</h1>
+        <h1>Our Available Trainers</h1>
     </div>
     <br />
     <div>
@@ -10,10 +10,10 @@
     </div>
     <br />
     <div class="main">
-        <table class="table table-hover">
+        <table class="table table-hover table-light table-responsive-lg">
             <thead class="thead-dark">
                 <tr>
-                    <th>Id</th>
+                    <th>#</th>
                     <th>Photo</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
@@ -37,9 +37,12 @@
                         <td>@trainer.Email</td>
                         <td>@trainer.HireDate.ToString("yyyy/m/d")</td>
                         <td>
-                            <a href="/Trainer/Details?id=@trainer.Id" class="btn btn-outline-info">Details</a>
-                            <a href="/Trainer/Edit" class="btn btn-outline-warning">Edit</a>
-                            <a href="/Trainer/Delete" class="btn btn-outline-danger">Delete</a>
+                            <a href="/Trainer/Details?id=@trainer.Id" class="btn btn-outline-info btn-sm">Details</a>
+                            <a href="/Trainer/Edit?id=@trainer.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                            <form action="/trainer/delete" method="post">
+                                <input type="hidden" name="id" value="@trainer.Id" />
+                                <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete"/>
+                            </form>
                         </td>
                     </tr>
                 }
@@ -52,6 +55,6 @@
         <p>Total rows: 5</p>
     </div>
     <div>
-        <a href="/Home/Index" class="btn btn-outline-dark" target="_self" title="BACK">BACK</a>
+        <a href="/Home/Index" class="btn btn-outline-primary" target="_self" title="BACK">Back</a>
     </div>
 </div>

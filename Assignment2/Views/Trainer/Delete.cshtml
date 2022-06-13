@@ -1,46 +1,47 @@
-﻿
+﻿@model Assignment2.Models.Trainer
 <div class="container">
     <div class="popover-header">
-        <h1>Trainer Delete works</h1>
+        <h2>Delete trainer</h2>
     </div>
 
-    <div class="main" id="deleteForm">
+    <div class="main bg-transparent" id="deleteForm">
         <form class="form-check" action="" method="post">
-
-            <div class="form-group"></div>
-            <label for="FirstName">Firstname:</label>
-            <input type="text" class="form-control" id="FirstName" aria-describedby="firstName" placeholder="Enter here firstname">
-            <small id="fnameHelp" class="form-text text-muted">Required firstname</small>
-
-            <div class="form-group"></div>
-            <label for="LastName">Lastname:</label>
-            <input type="text" class="form-control" id="LastName" aria-describedby="lastName" placeholder="Enter here lastname">
-            <small id="lnameHelp" class="form-text text-muted">Required lastname</small>
-
-            <div class="form-group"></div>
-            <label for="Email">Email:</label>
-            <input type="text" class="form-control" id="Email" aria-describedby="email" placeholder="Enter here email">
-            <small id="emailHelp" class="form-text text-muted">Required email</small>
-
-
-            <div class="form-group"></div>
-            <label for="Phone">Phone:</label>
-            <input type="number" class="form-control" id="Phone" aria-describedby="phone" placeholder="Enter here phone">
-            <small id="phoneHelp" class="form-text text-muted">Required phone</small>
-
-            <div class="form-group"></div>
-            <label for="Salary">Salary:</label>
-            <input type="number" class="form-control" id="Salary" aria-describedby="salary" placeholder="Enter here salary">
-            <small id="salaryHelp" class="form-text text-muted">Required salary</small>
-
-            <input class="btn btn-primary mb-2" type="submit" name="name" value="Delete" />
-            <input class="btn btn-danger mb-2" type="reset" name="name" value="Clear" />
+            <div class="form-group col-md-9">
+                <label class="font-weight-bold" for="Salary">Do you want really to delete the trainer: </label>
+                <span>  </span>
+                <input class="btn btn-outline-danger col-sm-1" type="submit" name="name" value="Yes"/>
+                <span>  </span>
+                <button class="btn btn-outline-dark col-sm-1" type="reset" name="name">No</button> 
+            </div>
         </form>
-
+        <table class="table table-responsive-md border-right-0 table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Photo</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Phone</th>
+                    <th>Salary</th>
+                    <th>Email</th>
+                    <th>Hired(y/m/d)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Id</td>
+                    <td><img src="@Model.PhotoUrl" width="50" /></td>
+                    <td>@Model.FirstName</td>
+                    <td>@Model.LastName</td>
+                    <td>@Model.Phone</td>
+                    <td>@Model.Salary</td>
+                    <td>@Model.Email</td>
+                    <td>@Model.HireDate</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-    
     <div>
-        <a href="/Trainer/" class="btn btn-outline-dark" target="_self" title="BACK">BACK</a>
+        <a href="/Trainer/" class="btn btn-outline-primary" target="_self" title="BACK">Back</a>
     </div>
 </div>
