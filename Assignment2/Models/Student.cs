@@ -8,7 +8,7 @@ using Assignment2.Models.Enum;
 
 namespace Assignment2.Models
 {
-    public class Trainer
+    public class Student
     {
         [Key]//model validations
         public int Id { get; set; }
@@ -33,7 +33,7 @@ namespace Assignment2.Models
         [MinLength(10)]
         public string Phone { get; set; }
 
-        [Range(1000,30000)]
+        [Range(1000, 30000)]
         public decimal Salary { get; set; }
         public DateTime HireDate { get; set; }
 
@@ -41,10 +41,12 @@ namespace Assignment2.Models
 
         public Country Country { get; set; }
 
+        //Navigation properties
+        public ICollection<Trainer> Trainers { get; set; }
 
-        //foreign key
-        public int StudentId { get; set; }
-        //navigation properties
-        public Student Student { get; set; }
+        public Student()
+        {
+            Trainers = new HashSet<Trainer>();
+        }
     }
 }

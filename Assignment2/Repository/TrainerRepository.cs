@@ -21,7 +21,7 @@ namespace Assignment2.Repository
             return db.Trainers.ToList();
         }
 
-        public  Trainer GetById(int? id)
+        public Trainer GetById(int? id)
         {
             var trainer = db.Trainers.Find(id);
             return trainer;
@@ -30,7 +30,7 @@ namespace Assignment2.Repository
         public void Delete(Trainer trainer)
         {
             db.Entry(trainer).State = EntityState.Deleted;  //set the state of this entity in deleted state
-            db.SaveChanges();   
+            db.SaveChanges();
         }
 
         public void Add(Trainer trainer)
@@ -39,6 +39,11 @@ namespace Assignment2.Repository
             db.SaveChanges();
         }
 
-        
+        public void Edit(Trainer trainer)
+        {
+
+            db.Entry(trainer).State = EntityState.Added;
+            db.SaveChanges();
+        }
     }
 }

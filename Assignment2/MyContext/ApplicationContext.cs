@@ -20,5 +20,6 @@ namespace Assignment2.MyContext
         }
 
         public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

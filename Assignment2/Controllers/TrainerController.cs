@@ -36,17 +36,50 @@ namespace Assignment2.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Trainer trainer)
         {
             if (ModelState.IsValid) // BackEnd Validation
             {
                 trainerRepository.Add(trainer);
-                TempData["message"] = $" You have successfully created trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
                 return RedirectToAction("Index");
+                TempData["message"] = $" You have successfully created trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
+
             }
 
             return View(trainer);
         }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if(id == null){
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var trainer = trainerRepository.GetById(id);
+
+            if(trainer == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            return View(trainer);
+        }
+
+
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Trainer trainer)
+        {
+            if (ModelState.IsValid) //Back End Validation
+            {
+                trainerRepository.Edit(trainer);
+                TempData["message"] = $" You have successfully updated trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
+                return RedirectToAction("Index");
+            }
+            return View(trainer);
+        }
+
 
 
         public ActionResult Details(int? id)
