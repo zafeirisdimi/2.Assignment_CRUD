@@ -149,9 +149,12 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ## Technologies ##
 
-- Entity Framework 6
-- ASP.NET MVC
-- Visual Studio 2022
-- Microsoft SQL Server Management Studio 2018
+- [EF]Entity Framework 6
+- [.NET]ASP.NET MVC
+- [Visual Studio]Visual Studio 2022
+- Microsoft SQL Server
+- [Html]Html
+- [Css]CSS
+- [Boostrap]Bootstrap 4
 
 ##### [Back to >Top<](#assignment2_crud) #####
