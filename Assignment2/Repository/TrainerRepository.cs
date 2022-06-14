@@ -33,6 +33,12 @@ namespace Assignment2.Repository
             db.SaveChanges();   
         }
 
+        public void Add(Trainer trainer)
+        {
+            db.Entry(trainer).State = EntityState.Added;
+            db.SaveChanges();
+        }
+
         
     }
 }

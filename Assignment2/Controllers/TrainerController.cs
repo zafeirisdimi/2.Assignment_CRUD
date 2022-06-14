@@ -1,4 +1,5 @@
-﻿using Assignment2.MyContext;
+﻿using Assignment2.Models;
+using Assignment2.MyContext;
 using Assignment2.Repository;
 using System;
 using System.Collections.Generic;
@@ -28,10 +29,25 @@ namespace Assignment2.Controllers
             return View(trainers);
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create(Trainer trainer)
+        {
+            if (ModelState.IsValid) // BackEnd Validation
+            {
+                trainerRepository.Add(trainer);
+                TempData["message"] = $" You have successfully created trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
+                return RedirectToAction("Index");
+            }
+
+            return View(trainer);
+        }
+
 
         public ActionResult Details(int? id)
         {
@@ -60,6 +76,7 @@ namespace Assignment2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             trainerRepository.Delete(trainer);
+            TempData["message"] = $" You have successfully deleted trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
 
             return RedirectToAction("Index");
         }

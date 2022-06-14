@@ -123,6 +123,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Enum\Country.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="MyContext\ApplicationContext.cs" />
     <Compile Include="MyContext\Initializers\MokupDbInitializer.cs" />

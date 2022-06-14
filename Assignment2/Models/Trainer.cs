@@ -4,36 +4,42 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Assignment2.Models.Enum;
 
 namespace Assignment2.Models
 {
     public class Trainer
     {
-        [Key]
+        [Key]//model validations
         public int Id { get; set; }
 
         [Required(ErrorMessage = "FirstName Required")]
-        [StringLength(30, MinimumLength = 5,ErrorMessage = "Validation Problem in FirstName")]
+        [MaxLength(20)]
+        [MinLength(3)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "LastName Required")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Validation Problem in LastName")]
+        [MaxLength(20)]
+        [MinLength(3)]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email Required")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Validation Problem in Email")]
+        [MaxLength(50)]
+        [MinLength(7)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Phone Required")]
-        [StringLength(20, MinimumLength = 10, ErrorMessage = "Validation Problem in Phone")]
+        [Required(ErrorMessage = "Email Required")]
+        [MaxLength(20)]
+        [MinLength(10)]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Salary Required")]
-        [Range(1000,2000)]
-        public int Salary { get; set; }
+        [Range(1000,30000)]
+        public decimal Salary { get; set; }
         public DateTime HireDate { get; set; }
 
         public string PhotoUrl { get; set; }
+
+        public Country Country { get; set; }
 
 
 
