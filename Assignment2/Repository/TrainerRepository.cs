@@ -1,4 +1,5 @@
 ﻿using Assignment2.Models;
+using Assignment2.Models.Queries;
 using Assignment2.MyContext;
 using System;
 using System.Collections.Generic;
@@ -51,5 +52,39 @@ namespace Assignment2.Repository
             db.SaveChanges();
         }
         
+
+        //-----filtering-----
+        public void Filter (List<Trainer> trainers, TrainerSearchQuery query)
+        {
+
+            //searchName
+            if (!string.IsNullOrWhiteSpace(query.searchFirstName)) //null or "    " or ""
+            {
+                //trainers = trainers.Where(t => t.FirstName.ToUpper() == searchName.ToUpper()).ToList();
+                trainers = trainers.Where(t => t.FirstName.ToUpper().Contains(query.searchFirstName.ToUpper())).ToList();
+            }
+
+            //searchCountry
+            if (!string.IsNullOrWhiteSpace(query.searchCountry))
+            {
+                trainers = trainers.Where(x => x.Country.ToString() == query.searchCountry).ToList();
+            }
+
+            //searchSalaryMin
+            if (!(query.searchSalaryMin is null))
+            {
+                trainers = trainers.Where(t => t.Salary >= query.searchSalaryMin).ToList();
+            }
+
+            //searchSalaryMax
+            if (!(query.searchSalaryMax is null))
+            {
+                trainers = trainers.Where(t => t.Salary <= query.searchSalaryMax).ToList();
+            }
+
+
+
+        }
+            
     }
 }

@@ -126,6 +126,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomValidations\MyValidationMethods.cs" />
     <Compile Include="Models\Enum\Country.cs" />
+    <Compile Include="Models\Queries\TrainerSearchQuery.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Trainer.cs" />
     <Compile Include="MyContext\ApplicationContext.cs" />

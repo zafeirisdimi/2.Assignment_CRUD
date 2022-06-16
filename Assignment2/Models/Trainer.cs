@@ -14,21 +14,21 @@ namespace Assignment2.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "FirstName Required")]
-        [MaxLength(20)]
+        [MaxLength(30)]
         [MinLength(3)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "LastName Required")]
-        [MaxLength(20)]
+        [MaxLength(30)]
         [MinLength(3)]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email Required")]
-        [MaxLength(50)]
+        [MaxLength(60)]
         [MinLength(7)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Email Required")]
+        [Required(ErrorMessage = "Phone Required")]
         [MaxLength(20)]
         [MinLength(10)]
         public string Phone { get; set; }

@@ -1,11 +1,35 @@
 ﻿@model IEnumerable<Assignment2.Models.Trainer>
-
+@using Assignment2.Models.Enum
 <div class="popover-header">
     <h1>Our Available Trainers</h1>
 </div>
 <br />
 <div>
     <a href="/Trainer/Create" class="btn btn-success" target="_blank" title="Add new Trainer in your list">Create new Teacher</a>
+</div>
+<div class="form-group">
+    <form>
+
+        @{
+            var countries = Enum.GetNames(typeof(Country));
+        }
+        <select name="searchCountry">
+            
+            <option value="">All</option>
+            @foreach (var country in countries)
+            {
+
+                <option>@country</option>
+            }
+
+        </select>
+
+        <input type="number" name="searchMin" value="@(ViewBag.currentSalaryMin is null ? ViewBag.MinSalary : ViewBag.currentSalaryMin)" placeholder="Set min salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
+        <input type="number" name="searchMin" value="@(ViewBag.currentSalaryMax is null ? ViewBag.MaxSalary : ViewBag.currentSalaryMax)" placeholder="Set max salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary"/>
+
+        <input type="text" name="searchFirstName" value="@ViewBag.currentFirstName" placeholder="Search First Name" />
+        <input type="submit" name="name" value="Search Trainer" />
+    </form>
 </div>
 <br />
 

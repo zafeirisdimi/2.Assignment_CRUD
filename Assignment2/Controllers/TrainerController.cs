@@ -1,4 +1,5 @@
 ﻿using Assignment2.Models;
+using Assignment2.Models.Queries;
 using Assignment2.MyContext;
 using Assignment2.Repository;
 using System;
@@ -25,10 +26,31 @@ namespace Assignment2.Controllers
             studentRepository = new StudentRepository(db);
         }
         // GET: Trainer
-        public ActionResult Index()
+        public ActionResult Index(TrainerSearchQuery query)
         {
             var trainers = trainerRepository.GetAllWithStudent();
             ViewBag.TotalTrainers = trainers.Count();
+
+
+            //current state of search form
+            ViewBag.currentFirstName = query.searchFirstName;
+            ViewBag.currentCountry = query.searchCountry;
+            ViewBag.currentSalaryMin = query.searchSalaryMin;
+            ViewBag.currentSalaryMax = query.searchSalaryMax;
+
+            trainerRepository.Filter(trainers, query);
+
+
+
+
+
+
+            ViewBag.MinSalary = trainers.Min(t => t.Salary);
+            ViewBag.MaxSalary = trainers.Max(t => t.Salary);
+            
+
+
+
             return View(trainers);
         }
 
