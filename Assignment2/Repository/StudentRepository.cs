@@ -22,9 +22,19 @@ namespace Assignment2.Repository
             return db.Students.ToList();
         }
 
+        public List<Student> GetAllWithTrainers()
+        {
+            return db.Students.Include(s => s.Trainers).ToList();
+        }
+
         public Student GetById(int? id)
         {
             var student = db.Students.Find(id);
+            return student;
+        }
+        public Student GetByIdWithTrainers(int? id)
+        {
+            var student = GetAllWithTrainers().Find(s => s.Id == id);
             return student;
         }
 
@@ -36,7 +46,7 @@ namespace Assignment2.Repository
 
         public void Add(Student student)
         {
-            db.Entry(student).State = EntityState.Added;
+            db.Entry(student).State = EntityState.Added; //set the state of this entity in added state
             db.SaveChanges();
         }
 

@@ -1,61 +1,72 @@
 ﻿@model IEnumerable<Assignment2.Models.Trainer>
 
-<div class="container">
-    <div class="popover-header">
-        <h1>Our Available Trainers</h1>
-    </div>
-    <br />
-    <div>
-        <a href="/Trainer/Create" class="btn btn-outline-success" target="_blank" title="Add new Trainer in your list">Create new Teacher</a>
-    </div>
-    <br />
-    <div class="main">
-        <table class="table table-hover table-light table-responsive-lg">
-            <thead class="thead-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Photo</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Phone</th>
-                    <th>Salary</th>
-                    <th>Email</th>
-                    <th>Hired(y/m/d)</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var trainer in Model)
-                {
-                    <tr>
-                        <td>@trainer.Id</td>
-                        <td><img src="@trainer.PhotoUrl" width="30" alt="@trainer.FirstName+''+@trainer.LastName"/></td>
-                        <td>@trainer.FirstName</td>
-                        <td>@trainer.LastName</td>
-                        <td>@trainer.Phone</td>
-                        <td>@trainer.Salary</td>
-                        <td>@trainer.Email</td>
-                        <td>@trainer.HireDate.ToString("yyyy/m/d")</td>
-                        <td>
-                            <a href="/Trainer/Details?id=@trainer.Id" class="btn btn-outline-info btn-sm">Details</a>
-                            <a href="/Trainer/Edit?id=@trainer.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+<div class="popover-header">
+    <h1>Our Available Trainers</h1>
+</div>
+<br />
+<div>
+    <a href="/Trainer/Create" class="btn btn-success" target="_blank" title="Add new Trainer in your list">Create new Teacher</a>
+</div>
+<br />
+
+<table class="table table-hover table-light table-responsive-lg">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Photo</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Phone</th>
+            <th>Salary</th>
+            <th>Email</th>
+            <th>Hired(y/m/d)</th>
+            <th>Student</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trainer in Model)
+        {
+            <tr>
+                <td>@trainer.Id</td>
+                <td><img src="@trainer.PhotoUrl" width="30" alt="@trainer.FirstName+''+@trainer.LastName" /></td>
+                <td>@trainer.FirstName</td>
+                <td>@trainer.LastName</td>
+                <td>@trainer.Phone</td>
+                <td>@trainer.Salary</td>
+                <td>@trainer.Email</td>
+                <td>@trainer.HireDate.ToString("yyyy/m/d")</td>
+                <td>
+                    <ul class="small">
+                        <li><i class="fa-solid fa-graduation-cap">@trainer.Student.LastName</i></li>
+                    </ul>
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <div class="p-sm-1">
+                            <a href="/trainer/Details?id=@trainer.Id" class="btn btn-info btn-sm">Details</a>
+                        </div>
+                        <div class="p-sm-1">
+                            <a href="/trainer/Edit?id=@trainer.Id" class="btn btn-warning btn-sm">Edit</a>
+                        </div>
+                        <div class="p-sm-1">
                             <form action="/trainer/delete" method="post">
                                 @Html.AntiForgeryToken()
                                 <input type="hidden" name="id" value="@trainer.Id" />
-                                <input class="btn btn-outline-danger btn-sm" type="submit" value="Delete"/>
+                                <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
                             </form>
-                        </td>
-                    </tr>
-                }
+                        </div>
+                    </div>
 
-            </tbody>
-        </table>
-    </div>
+            </tr>
+        }
+    </tbody>
+</table>
 
-    <div class="blockquote-footer bg-light">
-        <p>Total rows: 5</p>
-    </div>
-    <div>
-        <a href="/Home/Index" class="btn btn-outline-primary" target="_self" title="BACK">Back</a>
-    </div>
+<div class="blockquote-footer bg-light">
+    <p>Total rows: @ViewBag.TotalTrainers</p>
 </div>
+<div>
+    @Html.ActionLink("Go back", "Index","Home", null, new { @class = "btn btn-sm btn-secondary" })
+</div>
+

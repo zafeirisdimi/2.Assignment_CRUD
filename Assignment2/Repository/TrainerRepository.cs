@@ -21,6 +21,11 @@ namespace Assignment2.Repository
             return db.Trainers.ToList();
         }
 
+        public List<Trainer> GetAllWithStudent()
+        {
+            return db.Trainers.Include(s => s.Student).ToList() ;
+        }
+
         public Trainer GetById(int? id)
         {
             var trainer = db.Trainers.Find(id);
@@ -45,5 +50,6 @@ namespace Assignment2.Repository
             db.Entry(trainer).State = EntityState.Added;
             db.SaveChanges();
         }
+        
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Assignment2.Models.Enum;
+using Assignment2.Models.CustomValidations;
 
 namespace Assignment2.Models
 {
@@ -16,6 +17,7 @@ namespace Assignment2.Models
         [Required(ErrorMessage = "FirstName Required")]
         [MaxLength(20)]
         [MinLength(3)]
+        [CustomValidation(typeof(MyValidationMethods),"FirstLetterCapital")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "LastName Required")]

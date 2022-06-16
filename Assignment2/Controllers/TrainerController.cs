@@ -16,22 +16,26 @@ namespace Assignment2.Controllers
 
         private ApplicationContext db = new ApplicationContext();
         private TrainerRepository trainerRepository;
+        private StudentRepository studentRepository;
 
 
         public TrainerController()
         {
             trainerRepository = new TrainerRepository(db);
+            studentRepository = new StudentRepository(db);
         }
         // GET: Trainer
         public ActionResult Index()
         {
-            var trainers = trainerRepository.GetAll();
+            var trainers = trainerRepository.GetAllWithStudent();
+            ViewBag.TotalTrainers = trainers.Count();
             return View(trainers);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
+            GetStudents();
             return View();
         }
 
@@ -43,10 +47,10 @@ namespace Assignment2.Controllers
             {
                 trainerRepository.Add(trainer);
                 return RedirectToAction("Index");
-                TempData["message"] = $" You have successfully created trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
+                ShowAlert($" You have successfully created trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}");
 
             }
-
+            GetStudents();
             return View(trainer);
         }
 
@@ -63,20 +67,23 @@ namespace Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
+
+            GetStudents();
             return View(trainer);
         }
 
 
-        [HttpGet]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Trainer trainer)
         {
             if (ModelState.IsValid) //Back End Validation
             {
                 trainerRepository.Edit(trainer);
-                TempData["message"] = $" You have successfully updated trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
+                ShowAlert($" You have successfully updated trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}");
                 return RedirectToAction("Index");
             }
+            GetStudents();
             return View(trainer);
         }
 
@@ -114,10 +121,6 @@ namespace Assignment2.Controllers
             return RedirectToAction("Index");
         }
 
-        
-        
-        
-  
         protected override void Dispose(bool disposing) // katastrogi tou context
         {
             if (disposing)
@@ -126,6 +129,26 @@ namespace Assignment2.Controllers
             }
             
             base.Dispose(disposing);
+        }
+
+        [NonAction]
+        public void GetStudents()
+        {
+            var students = studentRepository.GetAll();
+            ViewBag.Students = students;
+            ViewBag.TotalStudents = students.Count();
+        }
+
+        [NonAction]
+        public void GetStudentsCount()
+        {
+            var students = studentRepository.GetAll();
+            ViewBag.TotalStudents = students.Count();
+        }
+        [NonAction]
+        public void ShowAlert(string message)
+        {
+            TempData["message"] = message;
         }
 
     }

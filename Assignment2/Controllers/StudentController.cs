@@ -27,7 +27,8 @@ namespace Assignment2.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            var students = studentRepository.GetAll();
+            var students = studentRepository.GetAllWithTrainers();
+            ViewBag.TotalStudents = students.Count();
             return View(students);
         }
 
@@ -38,7 +39,9 @@ namespace Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+
+            Student student = studentRepository.GetById(id);
+
             if (student == null)
             {
                 return HttpNotFound();
@@ -62,7 +65,7 @@ namespace Assignment2.Controllers
             if (ModelState.IsValid)
             {
                 studentRepository.Add(student);
-                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -76,7 +79,7 @@ namespace Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = studentRepository.GetById(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -93,8 +96,7 @@ namespace Assignment2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
+                studentRepository.Edit(student);
                 return RedirectToAction("Index");
             }
             return View(student);
@@ -107,7 +109,7 @@ namespace Assignment2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = studentRepository.GetByIdWithTrainers(id);
             if (student == null)
             {
                 return HttpNotFound();
@@ -120,9 +122,8 @@ namespace Assignment2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Student student = db.Students.Find(id);
-            db.Students.Remove(student);
-            db.SaveChanges();
+            Student student = studentRepository.GetById(id);
+            studentRepository.Delete(student);
             return RedirectToAction("Index");
         }
 

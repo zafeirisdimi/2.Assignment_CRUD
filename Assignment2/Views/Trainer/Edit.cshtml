@@ -1,66 +1,85 @@
 ﻿@model Assignment2.Models.Trainer
 @using Assignment2.Models.Enum
+@using Assignment2.Models
 
 
-<div class="container">
+
     <div class="popover-header">
-        <h1>Trainer Edit </h1>
+        <h1>@Model.LastName's profile Edit </h1>
     </div>
-
-    <div class="main" id="editForm">
-        <form class="form-check" action="" method="post">
-            @Html.AntiForgeryToken()
-            <br />
-            <div class="form-group col-sm-4">
+    <form class="form-check" action="" method="post">
+        @Html.AntiForgeryToken()
+        <br />
+        <div class="form-row">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.FirstName)
                 @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your firstname", Type = "string" } })
                 @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "form-text alert-danger" })
             </div>
-            <div class="form-group col-sm-4">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.LastName)
                 @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your lastname", Type = "string" } })
                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "form-text alert-danger" })
             </div>
-            <div class="form-group col-sm-4">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.Email)
                 @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your email", Type = "email" } })
                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "form-text alert-danger" })
             </div>
-            <div class="form-group col-sm-4">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.Phone)
                 @Html.EditorFor(m => m.Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your phone", Type = "number" } })
                 @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "form-text alert-danger" })
             </div>
-            <div class="form-group col-sm-4">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.Salary)
                 @Html.EditorFor(m => m.Salary, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your salary", Type = "number" } })
                 @Html.ValidationMessageFor(m => m.Salary, "", new { @class = "form-text alert-danger" })
             </div>
-            <div class="form-group col-sm-4">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.HireDate)
                 @Html.EditorFor(m => m.HireDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter date" } })
                 @Html.ValidationMessageFor(m => m.HireDate, "", new { @class = "form-text alert-danger" })
             </div>
-
-            <div class="form-group col-sm-4">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.PhotoUrl)
                 @Html.EditorFor(m => m.PhotoUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your photo url", Type = "url" } })
                 @Html.ValidationMessageFor(m => m.PhotoUrl, "", new { @class = "form-text alert-danger" })
 
             </div>
-            <div class="form-group col-sm-4">
+            <div class="form-group col-5">
                 @Html.LabelFor(m => m.Country)
                 @Html.EnumDropDownListFor(m => m.Country, new { @class = "form-control" })
             </div>
-
-            <input class="btn btn-primary mb-2" type="submit" name="name" value="Update" />
-            <input class="btn btn-danger mb-2" type="reset" name="name" value="Clear" />
-        </form>
-
-    </div>
-
-
-    <div>
-        <a href="/Trainer/Index" class="btn btn-outline-primary" target="_blank" title="BACK TO HOME">Back</a>
-    </div>
-</div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label for="studentId" class="form-check-label col-1"> Student:</label>
+                    <select name="studentId" class="form-control col-8">
+                        <option value="">None</option>
+                        @foreach (var stu in ViewBag.Students as List<Student>)
+                        {
+                            if (stu.Id == Model.Id)
+                            {
+                                <option selected value="@stu.Id">@stu.FirstName @stu.LastName</option>
+                            }
+                            else
+                            {
+                                <option selected value="@stu.Id">@stu.FirstName @stu.LastName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary mb-2" type="submit" name="name" value="Update" />
+                <input class="btn btn-danger mb-2" type="reset" name="name" value="Clear" />
+            </div>
+    </form>
+    
