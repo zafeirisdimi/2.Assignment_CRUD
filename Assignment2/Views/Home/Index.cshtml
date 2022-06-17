@@ -1,11 +1,18 @@
-﻿@{
+﻿@model  Assignment2.Models.ViewModels.Baroufa
+
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1 class="display-1">CRUD Application </h1>
+    <h2 class="display-4"> with ASP.NET MVC and Entity Framework</h2>
+    <p class="lead col-5">Create | Read | Edit | Delete  Trainer</p>
+    <p class="col-5"><a href="https://github.com/zafeirisdimi/Assignment2" class="btn btn-outline-secondary btn-lg">Read more at Github &raquo;</a></p>
+    <p>
+        <img src="~/Media/crud.png" class="img-fluid"/>
+    </p>
 </div>
 
 <div class="row">
@@ -29,3 +36,29 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+<div class="container">
+    <div class="col-lg-5 bg-dark">
+        @foreach (var trainer in Model.Trainers)
+        {
+            <h4>@trainer.FirstName @trainer.LastName</h4>
+        }
+    </div>
+    <div class="col-lg-5 bg-secondary">
+        @foreach (var student in Model.Students)
+        {
+            <h4>@student.FirstName @student.LastName</h4>
+        }
+    </div>
+
+
+</div>
+<div class="container">
+
+    <div class="row">
+        @{Html.RenderAction("Index", "Trainer", new {sortOrder="SalaryAsc" });}
+    </div>
+    <div class="row">
+        @{Html.RenderAction("Index", "Student");}
+        </div>
+
+    </div>

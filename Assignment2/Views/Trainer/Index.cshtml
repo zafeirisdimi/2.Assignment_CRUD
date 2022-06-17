@@ -1,50 +1,83 @@
-﻿@model IEnumerable<Assignment2.Models.Trainer>
+﻿@model PagedList.IPagedList<Assignment2.Models.Trainer>
 @using Assignment2.Models.Enum
+@using PagedList
+@using PagedList.Mvc
+
 <div class="popover-header">
     <h1>Our Available Trainers</h1>
 </div>
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+        <strong>Success!</strong>@TempData["message"]
+    </div>
+}
 <br />
 <div>
-    <a href="/Trainer/Create" class="btn btn-success" target="_blank" title="Add new Trainer in your list">Create new Teacher</a>
+    <a href="/Trainer/Create" class="btn btn-success" target="_blank" title="Add new Trainer in your list"><i class="fa-solid fa-plus"></i> Create new Teacher</a>
 </div>
-<div class="form-group">
-    <form>
+<div class="form-group align-content-sm-center">
+    <form class="form-row p-1">
 
         @{
             var countries = Enum.GetNames(typeof(Country));
         }
-        <select name="searchCountry">
-            
-            <option value="">All</option>
-            @foreach (var country in countries)
+
+        <select name="searchCountry" class="form-control col-2 custom-select">
+            @if (ViewBag.currentCountry == null)
             {
+                <option value="">All</option>
+                foreach (var country in countries)
+                {
 
-                <option>@country</option>
+                    <option>@country</option>
+                }
             }
+            else
+            {
+                <option value="">All</option>
+                foreach (var country in countries)
+                {
+                    if (country == ViewBag.currentCountry)
+                    {
+                        <option selected>@country</option>
+                    }
+                    else
+                    {
+                        <option>@country</option>
+                    }
+                }
 
+            }
         </select>
+        <input class="form-control col-1" type="number" name="searchMin" value="@(ViewBag.currentSalaryMin is null ? ViewBag.MinSalary : ViewBag.currentSalaryMin)" placeholder="Set min salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
+        <input class="form-control col-1" type="number" name="searchMin" value="@(ViewBag.currentSalaryMax is null ? ViewBag.MaxSalary : ViewBag.currentSalaryMax)" placeholder="Set max salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
 
-        <input type="number" name="searchMin" value="@(ViewBag.currentSalaryMin is null ? ViewBag.MinSalary : ViewBag.currentSalaryMin)" placeholder="Set min salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
-        <input type="number" name="searchMin" value="@(ViewBag.currentSalaryMax is null ? ViewBag.MaxSalary : ViewBag.currentSalaryMax)" placeholder="Set max salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary"/>
-
-        <input type="text" name="searchFirstName" value="@ViewBag.currentFirstName" placeholder="Search First Name" />
-        <input type="submit" name="name" value="Search Trainer" />
+        <input class="form-control col-2" type="text" name="searchFirstName" value="@ViewBag.currentFirstName" placeholder="Search First Name" />
+        <input class="btn btn-primary btn-group-sm" type="submit" name="name" value="Search Trainer" />
     </form>
 </div>
 <br />
 
-<table class="table table-hover table-light table-responsive-lg">
-    <thead class="thead-dark">
+<div class="pagination-lg float-left"><strong>Page @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount)</strong></div>
+<div class="bg-transparent text-secondary text-end float-right">
+    <p>Total records:<strong> @Model.Count()</strong></p>
+</div>
+<br />
+<table class="table table-hover table-light table-responsive-lg text-center">
+    <thead class="thead-dark ">
         <tr>
-            <th>#</th>
-            <th>Photo</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Phone</th>
-            <th>Salary</th>
-            <th>Email</th>
-            <th>Hired(y/m/d)</th>
-            <th>Student</th>
+            <th>@Html.ActionLink("Id", "Index", "Trainer", new { sortOrder = ViewBag.IdSortParam }, null)</th>
+            <th><i class="fa-solid fa-file-image"></i></th>
+            <th>@Html.ActionLink("FirstName", "Index", "Trainer", new { sortOrder = ViewBag.FirstNameSortParam, searchFirstName = ViewBag.currentFirstName, searchCountry = ViewBag.currentCountry, searchSalaryMin = ViewBag.currentSalaryMin, searchSalaryMax = ViewBag.currentSalaryMax }, null)</th>
+            <th>@Html.ActionLink("LastName", "Index", "Trainer", new { sortOrder = ViewBag.LastNameSortParam }, null)</th>
+            <th><i class="fa-solid fa-mobile-screen"></i></th>
+            <th>@Html.ActionLink("Salary", "Index", "Trainer", new { sortOrder = ViewBag.SalarySortParam }, null)</th>
+            <th><i class="fa-solid fa-envelope"></i></th>
+            <th>@Html.ActionLink("HireDate", "Index", "Trainer", new { sortOrder = ViewBag.SalarySortParam }, null)</th>
+            <th>@Html.ActionLink("Student", "Index", "Trainer", new { sortOrder = ViewBag.StudentSortParam }, null)</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -61,36 +94,35 @@
                 <td>@trainer.Email</td>
                 <td>@trainer.HireDate.ToString("yyyy/m/d")</td>
                 <td>
-                    <ul class="small">
-                        <li><i class="fa-solid fa-graduation-cap">@trainer.Student.LastName</i></li>
+                    <ul class="small list-unstyled">
+                        <li>@trainer.Student.FirstName @trainer.Student.LastName</li>
                     </ul>
                 </td>
                 <td>
                     <div class="btn-group">
                         <div class="p-sm-1">
-                            <a href="/trainer/Details?id=@trainer.Id" class="btn btn-info btn-sm">Details</a>
+                            <a href="/trainer/Details?id=@trainer.Id" class="btn btn-info btn-sm"><i class="fa-solid fa-info"></i> Details</a>
                         </div>
                         <div class="p-sm-1">
-                            <a href="/trainer/Edit?id=@trainer.Id" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/trainer/Edit?id=@trainer.Id" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
                         </div>
                         <div class="p-sm-1">
                             <form action="/trainer/delete" method="post">
                                 @Html.AntiForgeryToken()
                                 <input type="hidden" name="id" value="@trainer.Id" />
-                                <input class="btn btn-danger btn-sm" type="submit" value="Delete" />
+                                <input class="btn btn-danger btn-sm" type="submit" value=" Delete" />
                             </form>
                         </div>
                     </div>
-
             </tr>
         }
     </tbody>
 </table>
-
-<div class="blockquote-footer bg-light">
-    <p>Total rows: @ViewBag.TotalTrainers</p>
+<div class="pagination-lg">
+    @Html.PagedListPager(Model, x => Url.Action("Index", "Trainer", new { page = x, pSize = 5 }), PagedListRenderOptions.Classic)
 </div>
+
 <div>
-    @Html.ActionLink("Go back", "Index","Home", null, new { @class = "btn btn-sm btn-secondary" })
+    @Html.ActionLink("Go back", "Index", "Home", null, new { @class = "btn btn-sm btn-secondary" })
 </div>
 

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Assignment2.Models.Queries
 {
-    public class TrainerSearchQuery
+    public class TrainerFilterSettings
     {
         public string searchFirstName { get; set; }
         public string searchCountry { get; set; }

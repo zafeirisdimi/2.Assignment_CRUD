@@ -8,6 +8,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 
 namespace Assignment2.Controllers
@@ -26,32 +28,68 @@ namespace Assignment2.Controllers
             studentRepository = new StudentRepository(db);
         }
         // GET: Trainer
-        public ActionResult Index(TrainerSearchQuery query)
+        public ActionResult Index(TrainerFilterSettings filterSettings,string sortOrder,int? page,int? pSize)
         {
-            var trainers = trainerRepository.GetAllWithStudent();
-            ViewBag.TotalTrainers = trainers.Count();
-
-
             //current state of search form
-            ViewBag.currentFirstName = query.searchFirstName;
-            ViewBag.currentCountry = query.searchCountry;
-            ViewBag.currentSalaryMin = query.searchSalaryMin;
-            ViewBag.currentSalaryMax = query.searchSalaryMax;
+            ViewBag.currentFirstName = filterSettings.searchFirstName;
+            ViewBag.currentCountry = filterSettings.searchCountry;
+            ViewBag.currentSalaryMin = filterSettings.searchSalaryMin;
+            ViewBag.currentSalaryMax = filterSettings.searchSalaryMax;
 
-            trainerRepository.Filter(trainers, query);
-
-
-
-
-
-
-            ViewBag.MinSalary = trainers.Min(t => t.Salary);
-            ViewBag.MaxSalary = trainers.Max(t => t.Salary);
-            
+            //filtering
+            (decimal minSalary, decimal maxSalary) trainerSalaryRange;
+            var trainersFilter = trainerRepository.Filter(filterSettings, out trainerSalaryRange);
+            ViewBag.MinSalary = trainerSalaryRange.minSalary;
+            ViewBag.MaxSalary = trainerSalaryRange.maxSalary;
 
 
+            //sorting
+            ViewBag.IdSortParam = sortOrder == "IdAsc" ? "IdDesc" : "IdAsc";   //per id
+            ViewBag.FirstNameSortParam = String.IsNullOrEmpty(sortOrder) ? "FirstNameDesc" : ""; //per FirstName
+            ViewBag.LastNameSortParam = String.IsNullOrEmpty(sortOrder) ? "LastNameDesc" : "";   //per LastName
+            ViewBag.SalarySortParam = sortOrder == "SalaryAsc" ? "SalaryDesc" : "SalaryAsc";     //per Salary
+            ViewBag.HireDateSortParam = sortOrder == "HireDateAsc" ? "HireDateDesc" : "HireDateAsc";    //per HireDate
+            ViewBag.StudentSortParam = sortOrder == "StudentAsc" ? "StudentDesc" : "StudentAsc";        //per Studen.LastName
+            ViewBag.CountrySortParam = sortOrder == "CountryAsc" ? "CountryDesc" : "CountryAsc";        //per Country(den emfanizetai pros to paron)
 
-            return View(trainers);
+            switch (sortOrder)
+            {
+                case "IdAsc": trainersFilter = trainersFilter.OrderBy(t => t.Id).ToList(); break;
+                case "IdDesc": trainersFilter = trainersFilter.OrderByDescending(t => t.Id).ToList();
+                    break;
+                
+                case "FirstNameAsc": trainersFilter = trainersFilter.OrderBy(t =>t.FirstName).ToList();break;
+                case "FirstNameDesc": trainersFilter = trainersFilter.OrderByDescending(t => t.FirstName).ToList(); break;
+                
+                case "LastNameAsc": trainersFilter = trainersFilter.OrderBy(t => t.LastName).ToList(); break;
+                case "LastNameDesc": trainersFilter = trainersFilter.OrderByDescending(t => t.LastName).ToList(); break;
+                
+                case "SalaryAsc": trainersFilter = trainersFilter.OrderBy(t => t.Salary).ToList(); break;
+                case "SalaryDesc": trainersFilter = trainersFilter.OrderByDescending(t => t.Salary).ToList(); break;
+
+                case "HireDateAsc": trainersFilter = trainersFilter.OrderBy(t => t.HireDate).ToList(); break;
+                case "HireDateDesc": trainersFilter = trainersFilter.OrderByDescending(t => t.HireDate).ToList(); break;
+
+                case "StudentAsc": trainersFilter = trainersFilter.OrderBy(t => t.Student.LastName).ToList(); break;
+                case "StudentDesc": trainersFilter = trainersFilter.OrderByDescending(t => t.Student.LastName).ToList(); break;
+
+                case "CountryAsc": trainersFilter = trainersFilter.OrderBy(t => t.Country).ToList(); break;
+                case "CountryDesc": trainersFilter = trainersFilter.OrderByDescending(t => t.Country).ToList(); break;
+
+                default:
+                    trainersFilter = trainersFilter.OrderBy(t => t.FirstName).ToList();
+                    ViewBag.TotalTrainers = trainersFilter.Count();
+                    break;
+            }
+
+            //pagination
+
+            int pageSize = pSize ?? 3; //nullable coalescing operator c#
+            int pageNumber = page ?? 1; //nullable coalescing operator c#
+
+
+            //ViewBag.TotalTrainers = trainersFilter.Count();
+            return View(trainersFilter.ToPagedList(pageNumber,pageSize));
         }
 
         [HttpGet]

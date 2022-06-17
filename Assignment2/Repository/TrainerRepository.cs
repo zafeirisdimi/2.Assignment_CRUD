@@ -54,36 +54,42 @@ namespace Assignment2.Repository
         
 
         //-----filtering-----
-        public void Filter (List<Trainer> trainers, TrainerSearchQuery query)
+        public List<Trainer> Filter (TrainerFilterSettings filterSettings, out (decimal minSalary, decimal maxSalary) trainerSalaryRange)
         {
+            List<Trainer> trainers = GetAllWithStudent();
 
+
+            decimal minSalary = trainers.Min(t => t.Salary);
+            decimal maxSalary = trainers.Max(t => t.Salary);
+            trainerSalaryRange = (minSalary, maxSalary);
+           
             //searchName
-            if (!string.IsNullOrWhiteSpace(query.searchFirstName)) //null or "    " or ""
+            if (!string.IsNullOrWhiteSpace(filterSettings.searchFirstName)) //null or "    " or ""
             {
                 //trainers = trainers.Where(t => t.FirstName.ToUpper() == searchName.ToUpper()).ToList();
-                trainers = trainers.Where(t => t.FirstName.ToUpper().Contains(query.searchFirstName.ToUpper())).ToList();
+                trainers = trainers.Where(t => t.FirstName.ToUpper().Contains(filterSettings.searchFirstName.ToUpper())).ToList();
             }
 
             //searchCountry
-            if (!string.IsNullOrWhiteSpace(query.searchCountry))
+            if (!string.IsNullOrWhiteSpace(filterSettings.searchCountry))
             {
-                trainers = trainers.Where(x => x.Country.ToString() == query.searchCountry).ToList();
+                trainers = trainers.Where(x => x.Country.ToString() == filterSettings.searchCountry).ToList();
             }
 
             //searchSalaryMin
-            if (!(query.searchSalaryMin is null))
+            if (!(filterSettings.searchSalaryMin is null))
             {
-                trainers = trainers.Where(t => t.Salary >= query.searchSalaryMin).ToList();
+                trainers = trainers.Where(t => t.Salary >= filterSettings.searchSalaryMin).ToList();
             }
 
             //searchSalaryMax
-            if (!(query.searchSalaryMax is null))
+            if (!(filterSettings.searchSalaryMax is null))
             {
-                trainers = trainers.Where(t => t.Salary <= query.searchSalaryMax).ToList();
+                trainers = trainers.Where(t => t.Salary <= filterSettings.searchSalaryMax).ToList();
             }
 
 
-
+            return trainers;
         }
             
     }
