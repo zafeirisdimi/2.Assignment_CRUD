@@ -149,6 +149,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ## Technologies ##
 
+- [C#]C#
 - [EF]Entity Framework 6
 - [.NET]ASP.NET MVC
 - [Visual Studio]Visual Studio 2022
@@ -156,5 +157,6 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 - [Html]Html
 - [Css]CSS
 - [Boostrap]Bootstrap 4
+- [Font Awesome 6]Font Awesome 6
 
 ##### [Back to >Top<](#assignment2_crud) #####
