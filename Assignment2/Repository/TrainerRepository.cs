@@ -35,7 +35,10 @@ namespace Assignment2.Repository
 
         public Trainer GetById(int? id)
         {
-            var trainer = db.Trainers.Find(id);
+            var trainer = db.Trainers.
+                Include(x => x.Student).
+                Include(x => x.Courses).
+                FirstOrDefault(x => x.Id == id);
             return trainer;
         }
 
@@ -47,6 +50,28 @@ namespace Assignment2.Repository
 
         public void Add(Trainer trainer)
         {
+            db.Entry(trainer).State = EntityState.Added;
+            db.SaveChanges();
+        }
+        public void Add(Trainer trainer, List <int> coursesIds)
+        {
+            if (coursesIds != null)
+            {
+                foreach (var id in coursesIds)
+                {
+                    var course = db.Courses.Find(id);
+                    if (course !=null)
+                    {
+                        trainer.Courses.Add(course);
+                    }
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(coursesIds));
+            }
+            
+            
             db.Entry(trainer).State = EntityState.Added;
             db.SaveChanges();
         }
@@ -104,7 +129,7 @@ namespace Assignment2.Repository
         //-----filtering-----
         public List<Trainer> Filter (TrainerFilterSettings filterSettings, out (decimal minSalary, decimal maxSalary) trainerSalaryRange)
         {
-            List<Trainer> trainers = GetAllWithStudent();
+            List<Trainer> trainers = GetAllWithStudentAndCourses();
 
 
             decimal minSalary = trainers.Min(t => t.Salary);

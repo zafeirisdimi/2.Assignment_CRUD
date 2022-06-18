@@ -6,7 +6,7 @@
     </div>
 
     <div class="main ">
-        <table class="table table-responsive-md">
+        <table class="table table-responsive-lg">
             <thead class="thead-light">
                 <tr>
                     <th>Id</th>
@@ -16,7 +16,10 @@
                     <th>Phone</th>
                     <th>Salary</th>
                     <th>Email</th>
+                    <th>Country</th>
+                    <th>Student</th>
                     <th>Hired(y/m/d)</th>
+                    <th>Courses</th>
 
                 </tr>
             </thead>
@@ -29,7 +32,18 @@
                     <td>@Model.Phone</td>
                     <td>@Model.Salary</td>
                     <td>@Model.Email</td>
+                    <td>@Model.Country</td>
+                    <td>@(Model.Student.LastName) @(Model.Student.FirstName)</td>
+
                     <td>@Model.HireDate.ToString("yyyy/m/d")</td>
+                    <td>
+                        <ul class="small list-unstyled">
+                            @foreach (var course in Model.Courses)
+                            {
+                                <li class="small text-sm-center">@course.Title</li>
+                            }
+                        </ul>
+                    </td>
 
                 </tr>
 

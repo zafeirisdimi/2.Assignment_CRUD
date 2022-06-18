@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList.Mvc;
 using PagedList;
-
+using Assignment2.Models.Enum;
 
 namespace Assignment2.Controllers
 {
@@ -99,9 +99,10 @@ namespace Assignment2.Controllers
         {
             GetStudents();
             GetCourses();
-            Trainer testTrainer = new Trainer() { FirstName = "Katerina", LastName = "Karapostolou", Email = "Karapostolou@gmail.com", Phone = "6978636606", Salary = 1400, HireDate = new DateTime(2022, 02, 04), PhotoUrl = "https://i1.rgstatic.net/ii/profile.image/586432527745024-1516827818338_Q512/Stavroula-Karapapa.jpg" };
+            //Trainer testTrainer = new Trainer() { FirstName = "Katerina", LastName = "Karapostolou", Email = "Karapostolou@gmail.com", Phone = "6978636606", Salary = 1400, HireDate = new DateTime(2022, 02, 04), PhotoUrl = "https://i1.rgstatic.net/ii/profile.image/586432527745024-1516827818338_Q512/Stavroula-Karapapa.jpg", Country = Country.Greece };
 
-            return View(testTrainer);
+           // return View(testTrainer);
+           return View();
         }
 
         [HttpPost]
@@ -119,7 +120,6 @@ namespace Assignment2.Controllers
                 {
                     trainerRepository.Add(trainer);
                 }
-                trainerRepository.Add(trainer);
                 ShowAlert($" You have successfully created trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}");
                 return RedirectToAction("Index");
             }

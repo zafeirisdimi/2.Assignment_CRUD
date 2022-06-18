@@ -9,15 +9,16 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @Html.Partial("~/Views/Shared/Components/_NavigationBar.cshtml"); 
+    @Html.Partial("~/Views/Shared/Components/_NavigationBar.cshtml")
     <div class="container container-fluid">
         @RenderBody()
         <hr />
-        @Html.Partial("~/Views/Shared/Components/_Footer.cshtml");
+        @Html.Partial("~/Views/Shared/Components/_Footer.cshtml")
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

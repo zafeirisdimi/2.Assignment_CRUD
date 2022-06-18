@@ -37,6 +37,8 @@ namespace Assignment2.Models
 
         [Range(1000,30000)]
         public decimal Salary { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true,DataFormatString = "{0: yyyy-MM-dd}")]
         public DateTime HireDate { get; set; }
 
         public string PhotoUrl { get; set; }

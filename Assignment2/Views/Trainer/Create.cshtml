@@ -62,19 +62,33 @@
             <div class="form-group col-5">
                 <label for="studentId" class="form-check-label col-1"> Student:</label>
                 <select name="studentId" class="form-control col-8">
-                    
+
                     @foreach (var item in ViewBag.Students as List<Student>)
                     {
                         <option value="@item.Id">@item.FirstName @item.LastName</option>
                     }
-                    <option value="value">text</option>
+
+                </select>
+            </div>
+            <div class="form-group col-5">
+                <label for="studentId" class="form-check-label col-1"> Select Courses:</label>
+                <select name="studentId" class="form-control col-8" multiple>
+
+                    @foreach (var item in ViewBag.Courses as List<Course>)
+                    {
+                        <option value="@item.Id">@item.Title</option>
+                    }
+
                 </select>
             </div>
         </div>
+        
+           
+        
         <div class="form-row">
             <div class="form-group">
-                    <input class="btn btn-primary mb-2" type="submit" name="create" value="Create" />
-                    <input class="btn btn-danger mb-2" type="reset" name="clear" value="Clear" />
+                <input class="btn btn-primary mb-2" type="submit" name="create" value="Create" />
+                <input class="btn btn-danger mb-2" type="reset" name="clear" value="Clear" />
             </div>
         </div>
     </form>
