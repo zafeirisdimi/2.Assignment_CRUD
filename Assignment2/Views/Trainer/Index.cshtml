@@ -3,7 +3,7 @@
 @using PagedList
 @using PagedList.Mvc
 
-<div class="popover-header">
+<div class="popover-header bg-transparent">
     <h1>Our Available Trainers</h1>
 </div>
 
@@ -92,7 +92,7 @@
                 <td>@trainer.Phone</td>
                 <td>@trainer.Salary</td>
                 <td>@trainer.Email</td>
-                <td>@trainer.HireDate.ToString("yyyy/m/d")</td>
+                <td>@trainer.HireDate.ToString("yyyy/MM/dd")</td>
                 <td>
                     <ul class="small list-unstyled">
                         <li>@trainer.Student.FirstName @trainer.Student.LastName</li>
@@ -118,7 +118,7 @@
         }
     </tbody>
 </table>
-<div class="pagination-lg">
+<div class="pagination-lg font-weight-bold">
     @Html.PagedListPager(Model, x => Url.Action("Index", "Trainer", new { page = x, pSize = 5 }), PagedListRenderOptions.Classic)
 </div>
 

@@ -20,12 +20,14 @@ namespace Assignment2.Controllers
         private ApplicationContext db = new ApplicationContext();
         private TrainerRepository trainerRepository;
         private StudentRepository studentRepository;
+        private CourseRepository courseRepository;
 
 
         public TrainerController()
         {
             trainerRepository = new TrainerRepository(db);
             studentRepository = new StudentRepository(db);
+            courseRepository = new CourseRepository(db);
         }
         // GET: Trainer
         public ActionResult Index(TrainerFilterSettings filterSettings,string sortOrder,int? page,int? pSize)
@@ -96,28 +98,41 @@ namespace Assignment2.Controllers
         public ActionResult Create()
         {
             GetStudents();
-            return View();
+            GetCourses();
+            Trainer testTrainer = new Trainer() { FirstName = "Katerina", LastName = "Karapostolou", Email = "Karapostolou@gmail.com", Phone = "6978636606", Salary = 1400, HireDate = new DateTime(2022, 02, 04), PhotoUrl = "https://i1.rgstatic.net/ii/profile.image/586432527745024-1516827818338_Q512/Stavroula-Karapapa.jpg" };
+
+            return View(testTrainer);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Trainer trainer)
+        public ActionResult Create(Trainer trainer,List<int> coursesIds)
         {
+            
             if (ModelState.IsValid) // BackEnd Validation
             {
+                if(coursesIds == null)
+                {
+                    trainerRepository.Add(trainer);
+                }
+                else
+                {
+                    trainerRepository.Add(trainer);
+                }
                 trainerRepository.Add(trainer);
-                return RedirectToAction("Index");
                 ShowAlert($" You have successfully created trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}");
-
+                return RedirectToAction("Index");
             }
             GetStudents();
+            GetCourses();
             return View(trainer);
         }
 
         [HttpGet]
         public ActionResult Edit(int? id)
         {
-            if(id == null){
+            if(id == null)
+            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
@@ -129,21 +144,31 @@ namespace Assignment2.Controllers
             }
 
             GetStudents();
+            GetCourses();
             return View(trainer);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Trainer trainer)
+        public ActionResult Edit(Trainer trainer, List<int> coursesIds)
         {
             if (ModelState.IsValid) //Back End Validation
             {
-                trainerRepository.Edit(trainer);
+                try
+                {
+                    trainerRepository.Edit(trainer,coursesIds);
+                }
+                catch (Exception)
+                {
+
+                    
+                }
                 ShowAlert($" You have successfully updated trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}");
                 return RedirectToAction("Index");
             }
             GetStudents();
+            GetCourses();
             return View(trainer);
         }
 
@@ -176,7 +201,7 @@ namespace Assignment2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             trainerRepository.Delete(trainer);
-            TempData["message"] = $" You have successfully deleted trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}";
+            ShowAlert($" You have successfully deleted trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}") ;
 
             return RedirectToAction("Index");
         }
@@ -191,6 +216,12 @@ namespace Assignment2.Controllers
             base.Dispose(disposing);
         }
 
+        [NonAction]
+        public void GetCourses()
+        {
+            var courses = courseRepository.GetAll();
+            ViewBag.Courses = courses;
+        }
         [NonAction]
         public void GetStudents()
         {

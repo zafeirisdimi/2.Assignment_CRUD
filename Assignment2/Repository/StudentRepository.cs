@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Assignment2.Models.Queries;
 
 namespace Assignment2.Repository
 {
@@ -52,9 +53,45 @@ namespace Assignment2.Repository
 
         public void Edit(Student student)
         {
-
             db.Entry(student).State = EntityState.Added;
             db.SaveChanges();
+        }
+        public List<Student> Filter(StudentFilterSettings filterSettings, out (int minSalary, int maxSalary) studentSalaryRange)
+        {
+            List<Student> students = GetAllWithTrainers();
+
+
+            int minSalary = students.Min(t => t.Salary);
+            int maxSalary = students.Max(t => t.Salary);
+            studentSalaryRange = (minSalary, maxSalary);
+
+            //searchName
+            if (!string.IsNullOrWhiteSpace(filterSettings.searchFirstName)) //null or "    " or ""
+            {
+                //trainers = trainers.Where(t => t.FirstName.ToUpper() == searchName.ToUpper()).ToList();
+                students = students.Where(t => t.FirstName.ToUpper().Contains(filterSettings.searchFirstName.ToUpper())).ToList();
+            }
+
+            //searchCountry
+            if (!string.IsNullOrWhiteSpace(filterSettings.searchCountry))
+            {
+                students = students.Where(x => x.Country.ToString() == filterSettings.searchCountry).ToList();
+            }
+
+            //searchSalaryMin
+            if (!(filterSettings.searchSalaryMin is null))
+            {
+                students = students.Where(t => t.Salary >= filterSettings.searchSalaryMin).ToList();
+            }
+
+            //searchSalaryMax
+            if (!(filterSettings.searchSalaryMax is null))
+            {
+                students = students.Where(t => t.Salary <= filterSettings.searchSalaryMax).ToList();
+            }
+
+
+            return students;
         }
     }
 }

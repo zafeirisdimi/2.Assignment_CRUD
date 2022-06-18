@@ -1,25 +1,83 @@
-﻿@model IEnumerable<Assignment2.Models.Student>
-<div class="popover-header">
+﻿@model PagedList.IPagedList<Assignment2.Models.Student>
+@using Assignment2.Models.Enum
+@using PagedList
+@using PagedList.Mvc
+
+<div class="popover-header bg-transparent">
     <h1>Our Available Students</h1>
 </div>
 <br />
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+        <strong>Success!</strong>@TempData["message"]
+    </div>
+}
+<br />
 <div>
-    <a href="/Student/Create" class="btn btn-success" target="_blank" title="Add new student in your list">Create new Student</a>
+    @Html.ActionLink("Create new Student", "Create", "Student", null, new { @class = "btn btn-success" })
 </div>
 <br />
-<table class="table table-striped table-dark table-responsive-lg">
+<div class="form-group ">
+    <form class="form-row p-1">
+
+        @{
+            var countries = Enum.GetNames(typeof(Country));
+        }
+
+        <select name="searchCountry" class="form-control col-2 custom-select">
+            @if (ViewBag.currentCountry == null)
+            {
+                <option value="">All</option>
+                foreach (var country in countries)
+                {
+
+                    <option>@country</option>
+                }
+            }
+            else
+            {
+                <option value="">All</option>
+                foreach (var country in countries)
+                {
+                    if (country == ViewBag.currentCountry)
+                    {
+                        <option selected>@country</option>
+                    }
+                    else
+                    {
+                        <option>@country</option>
+                    }
+                }
+
+            }
+        </select>
+        <input class="form-control col-1" type="number" name="searchMin" value="@(ViewBag.currentSalaryMin is null ? ViewBag.MinSalary : ViewBag.currentSalaryMin)" placeholder="Set min revenue" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
+        <input class="form-control col-1" type="number" name="searchMin" value="@(ViewBag.currentSalaryMax is null ? ViewBag.MaxSalary : ViewBag.currentSalaryMax)" placeholder="Set max revenue" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
+
+        <input class="form-control col-2" type="text" name="searchFirstName" value="@ViewBag.currentFirstName" placeholder="Search First Name" />
+        <input class="btn btn-primary btn-group-sm" type="submit" name="name" value="Search Student" />
+    </form>
+</div>
+<div class="pagination-lg float-left"><strong>Page @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount)</strong></div>
+<div class="bg-transparent text-secondary text-end float-right">
+    <p>Total records:<strong> @Model.Count()</strong></p>
+</div>
+<br />
+<table class="table table-hover table-striped table-dark table-responsive-lg text-center">
     <tr>
     <thead class="thead-dark">
         <tr>
-            <th>#</th>
-            <th>Photo</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Phone</th>
-            <th>Salary</th>
-            <th>Email</th>
-            <th>Registration(y/m/d)</th>
-            <th>Trainers</th>
+            <th>@Html.ActionLink("#", "Index", "Student", new { sortOrder = ViewBag.IdSortParam }, null)</th>
+            <th><i class="fa-solid fa-file-image"></i></th>
+            <th>@Html.ActionLink("FirstName", "Index", "Student", new { sortOrder = ViewBag.FirstNameSortParam, searchFirstName = ViewBag.currentFirstName, searchCountry = ViewBag.currentCountry, searchSalaryMin = ViewBag.currentSalaryMin, searchSalaryMax = ViewBag.currentSalaryMax }, null)</th>
+            <th>@Html.ActionLink("LastName", "Index", "Student", new { sortOrder = ViewBag.LastNameSortParam }, null)</th>
+            <th><i class="fa-solid fa-mobile-screen"></i></th>
+            <th>@Html.ActionLink("Revenue", "Index", "Student", new { sortOrder = ViewBag.SalarySortParam }, null)</th>
+            <th><i class="fa-solid fa-envelope"></i></th>
+            <th>@Html.ActionLink("Registration", "Index", "Student", new { sortOrder = ViewBag.SalarySortParam }, null)</th>
+            <th>@Html.ActionLink("Trainers", "Index", "Student", new { sortOrder = ViewBag.StudentSortParam }, null)</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -34,9 +92,9 @@
                 <td>@student.Phone</td>
                 <td>@student.Salary</td>
                 <td>@student.Email</td>
-                <td>@student.HireDate.ToString("yyyy/m/d")</td>
+                <td>@student.HireDate.ToString("yyyy/MM/dd")</td>
                 <td>
-                    <ul class="small">
+                    <ul class="small list-unstyled">
                         @foreach (var trainer in student.Trainers)
                         {
                             <li> @trainer.FirstName @trainer.LastName</li>
@@ -62,9 +120,10 @@
         }
     </tbody>
 </table>
-<div class="blockquote-footer bg-light">
-    <p>Total rows: @ViewBag.TotalStudents</p>
+<div class="pagination-lg font-weight-bold">
+    @Html.PagedListPager(Model, x => Url.Action("Index", "Student", new { page = x, pSize = 5 }), PagedListRenderOptions.Classic)
 </div>
+
 <div>
-  @Html.ActionLink("Go back", "Index", "Home", null, new { @class = "btn btn-sm btn-secondary" })
+    @Html.ActionLink("Go back", "Index", "Home", null, new { @class = "btn btn-sm btn-secondary" })
 </div>

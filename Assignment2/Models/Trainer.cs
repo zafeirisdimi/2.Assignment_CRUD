@@ -13,11 +13,13 @@ namespace Assignment2.Models
         [Key]//model validations
         public int Id { get; set; }
 
+        [Display(Name = "First name")]
         [Required(ErrorMessage = "FirstName Required")]
         [MaxLength(30)]
         [MinLength(3)]
         public string FirstName { get; set; }
 
+        [Display(Name = "Last name")]
         [Required(ErrorMessage = "LastName Required")]
         [MaxLength(30)]
         [MinLength(3)]
@@ -46,5 +48,13 @@ namespace Assignment2.Models
         public int StudentId { get; set; }
         //navigation properties
         public Student Student { get; set; }
+        //navigation property
+        public ICollection<Course> Courses { get; set; }
+
+        //constructor
+        public Trainer()
+        {
+            Courses = new HashSet<Course>();
+        }
     }
 }

@@ -1,7 +1,9 @@
 ﻿@model Assignment2.Models.Student
+@using Assignment2.Models.Enum
+@using Assignment2.Models
 
-<div class="popover-header">
-    <h1 class="display-4">Create Student </h1>
+<div class="popover-header bg-transparent">
+    <h1>Create Student </h1>
 </div>
 @using (Html.BeginForm())
 {
@@ -56,6 +58,19 @@
                 @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label " })
                 @Html.EnumDropDownListFor(model => model.Country, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
+                <label for="studentId" class="form-check-label col-1"> Trainer:</label>
+                <select name="studentId" class="form-control col-8">
+
+                    @foreach (var trainer in ViewBag.Trainers as List<Trainer>)
+                    {
+                        <option value="@trainer.Id">@trainer.FirstName @trainer.LastName</option>
+                    }
+
+                </select>
             </div>
         </div>
         <div class="form-group">

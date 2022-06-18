@@ -36,11 +36,8 @@
             </tbody>
         </table>
     </div>
-
-        <div class="blockquote-footer bg-light">
-            <p>Total rows: 5</p>
-        </div>
-        <div>
-            <a href="/Trainer/" class="btn btn-outline-primary" target="_self" title="BACK">Back</a>
-        </div>
+    <div>
+        @Html.ActionLink("Go back", "Index", "Trainer", null, new { @class = "btn btn-sm btn-secondary", title = "back" })
     </div>
+</div>
+

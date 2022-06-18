@@ -1,7 +1,6 @@
 ﻿@model Assignment2.Models.Student
 
-<h2 class="display-4">Details</h2>
-<hr />
+
 <div>
     <h2 display-3>Student Details</h2>
     <hr />
@@ -72,7 +71,7 @@
 
     </dl>
 </div>  
-    <div>
-        <a href="/Student/Index" class="btn btn-outline-secondary" target="_self" title="BACK">Back</a>
-    </div>
+<div>
+    @Html.ActionLink("Go back", "Index", null, new { @class = "btn btn-sm btn-secondary" })
+</div>
 

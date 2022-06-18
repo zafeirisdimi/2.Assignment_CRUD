@@ -123,6 +123,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TrainerController.cs" />
@@ -130,8 +131,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CustomValidations\MyValidationMethods.cs" />
     <Compile Include="Models\Enum\Country.cs" />
+    <Compile Include="Models\Queries\StudentSearchQuery.cs" />
     <Compile Include="Models\Queries\TrainerSearchQuery.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Trainer.cs" />
@@ -139,6 +142,7 @@
     <Compile Include="MyContext\ApplicationContext.cs" />
     <Compile Include="MyContext\Initializers\MokupDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CourseRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
     <Compile Include="Repository\TrainerRepository.cs" />
   </ItemGroup>
@@ -165,12 +169,13 @@
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\ProjectLogo_assignment2.png" />
     <Content Include="Media\crud.png" />
-    <Content Include="Media\favicon.ico" />
+    <Content Include="favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -280,6 +285,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Course\" />
     <Folder Include="Views\Shared\Components\Footer\" />
     <Folder Include="Views\Shared\Components\Navigation\" />
   </ItemGroup>

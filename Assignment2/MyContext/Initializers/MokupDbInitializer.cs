@@ -52,6 +52,41 @@ namespace Assignment2.MyContext.Initializers
             Trainer t15 = new Trainer() { FirstName = "Iokasti", LastName = "Adamopoulou", Email = "Adamopoulou@gmail.com", Phone = "6978776116", Salary = 1800, HireDate = new DateTime(2022, 02, 15), PhotoUrl = "https://www.kathimerini.gr//resources/2017-11/img_3730.jpg" };
             #endregion
 
+            #region Seeding Course Data
+            Course c1 = new Course() { Title = "Language C# BEGINNER" , Duration = 120};
+            Course c2 = new Course() { Title = "Language C# ADVANCED" , Duration = 120};
+            Course c3 = new Course() { Title = "Language EF" , Duration = 120};
+            Course c4 = new Course() { Title = "Language NETWORKS", Duration = 120};
+            Course c5 = new Course() { Title = "Language HTML/CSS" , Duration = 120};
+            Course c6 = new Course() { Title = "Language JAVA", Duration = 120};
+            Course c7 = new Course() { Title = "Language ANGULAR.JS" , Duration = 120};
+            Course c8 = new Course() { Title = "Language REACT.JS", Duration = 120};
+
+            #endregion
+
+
+            t1.Courses.Add(c1);
+            t1.Courses.Add(c2);
+            t1.Courses.Add(c3);
+            t1.Courses.Add(c4);
+            t1.Courses.Add(c5);
+
+            t2.Courses.Add(c6);
+            t2.Courses.Add(c2);
+            t2.Courses.Add(c3);
+            t2.Courses.Add(c4);
+            
+            t3.Courses.Add(c5);
+            t3.Courses.Add(c1);
+            t3.Courses.Add(c2);
+
+            t4.Courses.Add(c1);
+            t4.Courses.Add(c6);
+
+            t5.Courses.Add(c5);
+            t5.Courses.Add(c3);
+            t5.Courses.Add(c1);
+
 
             t1.Student = s1;
             t2.Student = s2;

@@ -36,7 +36,7 @@ namespace Assignment2.Models
         public string Phone { get; set; }
 
         [Range(1000, 30000)]
-        public decimal Salary { get; set; }
+        public int Salary { get; set; }
         public DateTime HireDate { get; set; }
 
         public string PhotoUrl { get; set; }
