@@ -35,6 +35,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
     - [ApplicationContext](#applicationcontext)
   - [Migrations](#migrations)
     - [Configurations](#configurations)
+    - 
   - [Model](#model)
  	- [Course](#course)
  	  - [Validation Error Messages](#validation-error-messages)
@@ -42,7 +43,6 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
       - [Validation Error Messages](#validation-error-messages)
     - [Student](#student)
       - [Validation Error Messages](#validation-error-messages)
-  - [##### 🔙🏠](#-)
   - [Interfaces](#interfaces)
     - [IPerson](#iperson)
   - [Repository](#repository)
@@ -54,38 +54,30 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
   	  - Methods
   	- [StudentRepository](#studentrepository)
   	  - Methods
-  - [##### 🔙🏠](#--1)
   - [Views](#views)
-  - [TrainerView]
-    - [Create](#create)
-    - [Read](#read)
-  - [##### Back to >Top<](#-back-to-top)
-    - [Edit](#edit)
-    - [Delete](#delete)
+   - [TrainerView]
+     - [Create](#create)
+     - [Read](#read)
+     - [Edit](#edit)
+     - [Delete](#delete)
    - [CourseView]
-    - [Create](#create)
-    - [Read](#read)
-  - [##### Back to >Top<](#-back-to-top)
-    - [Edit](#edit)
-    - [Delete](#delete)
-    - [StudentView]
-    - [Create](#create)
-    - [Read](#read)
-  - [##### Back to >Top<](#-back-to-top)
-    - [Edit](#edit)
-    - [Delete](#delete)
+     - [Create](#create)
+     - [Read](#read)
+     - [Edit](#edit)
+     - [Delete](#delete)
+   - [StudentView]
+     - [Create](#create)
+     - [Read](#read)
+     - [Edit](#edit)
+     - [Delete](#delete)
    - [AssignmentView]
-    - [Create](#create)
-    - [Read](#read)
-  - [##### Back to >Top<](#-back-to-top)
-    - [Edit](#edit)
-    - [Delete](#delete)
-  - [##### 🔙🏠](#--2)
-  - [Controller](#controller)
-    - [TrainerController](#trainercontroller)
+     - [Create](#create)
+     - [Read](#read)
+     - [Edit](#edit)
+     - [Delete](#delete)
   - [Installation](#installation)
   - [Technologies and Tools](#technologies-and-tools)
-        - [🔙🏠](#)
+        
 
   
 <!--te-->
@@ -102,9 +94,8 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ## Model ##
 
-
 ### Trainer ###
-
+	
 | Type           | Properties       | Methods | Required | Min| Max | 
 | :---:          |     :---:        |  :---:  |  :---:  | :---: | :---: | 
 | int            | ID     | get, set   | ☑️ | 1 | no-limit | 
@@ -159,6 +150,8 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | Catergory       | get, set    |☑️| 10 | 20 |
 | List Trainer | Trainers | get,set | ☑️ | 1 | no-limit
 
+#### Validation Error Messages ####
+
 | ErrorMessageCode         | ErrorMessage       | 
 | :---:          |     :---:        | 
 | int            | ID     | 
@@ -203,6 +196,36 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ## Repository ##
 ### TrainerRepository ###
+
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| int            | ID     | get, set   |
+| string            | FirstName     | get, set   |
+| string         | LastName      | get, set    |
+| string         | PhoneNumber       | get, set    |
+| int         | Salary       | get, set    |
+
+### StudentRepository ###
+
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| int            | ID     | get, set   |
+| string            | FirstName     | get, set   |
+| string         | LastName      | get, set    |
+| string         | PhoneNumber       | get, set    |
+| int         | Salary       | get, set    |
+
+### CourseRepository ###
+
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| int            | ID     | get, set   |
+| string            | FirstName     | get, set   |
+| string         | LastName      | get, set    |
+| string         | PhoneNumber       | get, set    |
+| int         | Salary       | get, set    |
+
+### AssignmentRepository ###
 
 | Method           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
@@ -263,15 +286,9 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | GetStudents        | Salary       | 
 
 ### Create ###
--
-------------------------------------------------------------------------------------------------------------------
 ### Read ###
--
-
-##### [Back to >Top<](#assignment2_crud) #####
-------------------------------------------------------------------------------------------------------------------
 ### Edit ###
--
+##### [Back to >Top<](#assignment2_crud) #####
 ## CourseView ##
 
 #### Methods
@@ -318,23 +335,43 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | GetStudents        | Salary       | 
 
 ### Create ###
--
-------------------------------------------------------------------------------------------------------------------
 ### Read ###
--
-
-##### [Back to >Top<](#assignment2_crud) #####
-------------------------------------------------------------------------------------------------------------------
 ### Edit ###
--
-------------------------------------------------------------------------------------------------------------------
-### Delete ###
-------------------------------------------------------------------------------------------------------------------
 ### Delete ###
 ##### [🔙🏠](#assignment2_crud) #####
 ------------------------------------------------------------------------------------------------------------------
 ## Controller ##
 ### TrainerController ###
+
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| Action            | ID     | get, set   |
+| Action            | FirstName     | get, set   |
+| Action         | LastName      | get, set    |
+| Action         | PhoneNumber       | get, set    |
+| Action         | Salary       | get, set    |
+
+### StudentController ###
+
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| Action            | ID     | get, set   |
+| Action            | FirstName     | get, set   |
+| Action         | LastName      | get, set    |
+| Action         | PhoneNumber       | get, set    |
+| Action         | Salary       | get, set    |
+
+### CourseController ###
+
+| Method           | Properties       | Methods |
+| :---:          |     :---:        |  :---:  |
+| Action            | ID     | get, set   |
+| Action            | FirstName     | get, set   |
+| Action         | LastName      | get, set    |
+| Action         | PhoneNumber       | get, set    |
+| Action         | Salary       | get, set    |
+
+### AssignmentController ###
 
 | Method           | Properties       | Methods |
 | :---:          |     :---:        |  :---:  |
