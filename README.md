@@ -23,6 +23,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 📋Table of contents
 =================
 
@@ -30,64 +31,62 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 
 - [Assignment2_CRUD](#assignment2_crud)
-- [📋Table of contents](#table-of-contents)
-  - [ApplicationDatabase](#applicationdatabase)
+ - [ApplicationDatabase](#applicationdatabase)
     - [ApplicationContext](#applicationcontext)
-  - [Migrations](#migrations)
+ - [Migrations](#migrations)
     - [Configurations](#configurations)
-    - 
-  - [Model](#model)
- 	- [Course](#course)
- 	  - [Validation Error Messages](#validation-error-messages)
+ - [Models](#models)
+    - [Assignment](#assignment)
+    - [Course](#course)
     - [Trainer](#trainer)
-      - [Validation Error Messages](#validation-error-messages)
     - [Student](#student)
-      - [Validation Error Messages](#validation-error-messages)
-  - [Interfaces](#interfaces)
+ - [Interfaces](#interfaces)
     - [IPerson](#iperson)
-  - [Repository](#repository)
-	- [AssignmentRepository](#assignmentrepository)
-	  - Methods
-  	- [CourseRepository](#trainerrepository)
-      - Methods
-  	- [TrainerRepository](#trainerrepository)
-  	  - Methods
-  	- [StudentRepository](#studentrepository)
-  	  - Methods
-  - [Views](#views)
-   - [TrainerView]
+ - [Repositories](#repositories)
+    - [AssignmentRepository](#assignmentrepository)
+    - [CourseRepository](#trainerrepository)
+    - [TrainerRepository](#trainerrepository)
+    - [StudentRepository](#studentrepository)
+ - [Views](#views)
+  - [TrainerView](#trainerview)
      - [Create](#create)
      - [Read](#read)
      - [Edit](#edit)
      - [Delete](#delete)
-   - [CourseView]
+  - [CourseView](#courseview)
      - [Create](#create)
      - [Read](#read)
      - [Edit](#edit)
      - [Delete](#delete)
-   - [StudentView]
+  - [StudentView](#studentview)
      - [Create](#create)
      - [Read](#read)
      - [Edit](#edit)
      - [Delete](#delete)
-   - [AssignmentView]
+  - [AssignmentView](#assignmentview)
      - [Create](#create)
      - [Read](#read)
      - [Edit](#edit)
      - [Delete](#delete)
-  - [Installation](#installation)
-  - [Technologies and Tools](#technologies-and-tools)
+ - [Controllers](#controllers)
+ - [Installation](#installation)
+ - [Technologies and Tools](#technologies-and-tools)
         
 
   
 <!--te-->
 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 ## ApplicationDatabase ##
+
 ### ApplicationContext ###
 
 ----------------------------------------------------------------------------------------------------------
 
 ## Migrations ##
+
 ### Configurations ###
 
 ----------------------------------------------------------------------------------------------------------
@@ -161,6 +160,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | int         | Salary       | 
 
 
+##### [🔙🏠](#assignment2_crud) #####
 
 ### Assignment ###
 
@@ -172,6 +172,8 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | get, set    |☑️| 10 | 20 |
 | int         | Salary       | get, set    |☑️| 1000 | 3000 |
 
+#### Validation Error Messages ####
+
 | ErrorMessageCode         | ErrorMessage       | 
 | :---:          |     :---:        | 
 | int            | ID     | 
@@ -179,6 +181,8 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | LastName      |
 | string         | PhoneNumber       | 
 | int         | Salary       | 
+
+##### [🔙🏠](#assignment2_crud) #####
 -------------------------------------------------------------------------------------------------------------------
 
 ## Interfaces ##
@@ -240,7 +244,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ## Views ##
 ## TrainerView ##
 
-#### Methods
+#### Methods ####
 
 | Title         | PARAMETER       |  GOAL |
 | :---:          |     :---:        | :---: |
@@ -270,7 +274,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ## StudentView ##
 
-#### Methods
+#### Methods ####
 
 | Title         | PARAMETER       |  GOAL |
 | :---:          |     :---:        | :---: |
@@ -288,10 +292,12 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ### Create ###
 ### Read ###
 ### Edit ###
-##### [Back to >Top<](#assignment2_crud) #####
+
+##### [🔙🏠](#assignment2_crud) #####
+
 ## CourseView ##
 
-#### Methods
+#### Methods ####
 
 | Title         | PARAMETER       |  GOAL |
 | :---:          |     :---:        | :---: |
@@ -312,14 +318,15 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ### Read ###
 -
 
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
+
 ------------------------------------------------------------------------------------------------------------------
 ### Edit ###
 -
 
 ## AssignmentView ##
 
-#### Methods
+#### Methods ####
 
 | Title         | PARAMETER       |  GOAL |
 | :---:          |     :---:        | :---: |
@@ -338,7 +345,9 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ### Read ###
 ### Edit ###
 ### Delete ###
+
 ##### [🔙🏠](#assignment2_crud) #####
+
 ------------------------------------------------------------------------------------------------------------------
 ## Controller ##
 ### TrainerController ###
