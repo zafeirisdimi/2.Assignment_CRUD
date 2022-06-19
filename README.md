@@ -4,11 +4,11 @@
 
 -----------------------------------------------------
 
-# Assignment2_CRUD
+# Assignment2_CRUD #
 
 You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</strong> using <strong>MVC</strong> methodologies for the entity <strong>Trainers</strong>.
 
-<details><summary><h2>Tasks</h2></summary>
+<details><summary><h2> Tasks </h2></summary>
 <p><h3>You    need    to    submit    all    the    produced    files    in    a    zip    file    named    by your_name_individual_partb.zip</h3>
 <ul>
     <li> <h3>Create Trainer [20marks]</h3> </li>
