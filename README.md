@@ -87,7 +87,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | 
 | int         | Salary       | 
 
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
 -------------------------------------------------------------------------------------------------------------------
 
 ## Interfaces ##
@@ -114,7 +114,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | get, set    |
 | int         | Salary       | get, set    |
 
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
 ------------------------------------------------------------------------------------------------------------------
 ## View ##
 
@@ -131,7 +131,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ------------------------------------------------------------------------------------------------------------------
 ### Delete ###
 -
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
 ------------------------------------------------------------------------------------------------------------------
 ## Controller ##
 ### TrainerController ###
@@ -147,16 +147,16 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ## Installation ##
 
 
-## Technologies ##
+## Technologies and Tools ##
 
-- [C#]C#
-- [EF]Entity Framework 6
-- [.NET]ASP.NET MVC
-- [Visual Studio]Visual Studio 2022
-- Microsoft SQL Server
-- [Html]Html
-- [Css]CSS
-- [Boostrap]Bootstrap 4
-- [Font Awesome 6]Font Awesome 6
+- [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
+- [Entity Framework](https://docs.microsoft.com/en-us/ef/ef6/)
+- [ASP.NET MVC Pattern](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc))
+- [Visual Studio Community Edition](https://visualstudio.microsoft.com/vs/community/)
+- [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- [HTML](https://www.w3schools.com/html/)
+- [CSS](https://www.w3schools.com/css/)
+- [Boostrap 4](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
 
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
