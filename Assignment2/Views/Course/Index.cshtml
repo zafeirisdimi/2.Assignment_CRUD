@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Assignment2.Models.Course>
+
+
+
+<div class=" bg-transparent">
+    <h1 class="display-4">Our Available Courses</h1>
+</div>
+<br />
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times</a>
+        <strong>Success!</strong>@TempData["message"]
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Add new Course", "Create", "Course", null, new { @class = "btn btn-outline-success " })
+</div>
+<br />
+<div class="form-group ">
+    <form class="form-row p-1">
+
+        <input class="form-control col-3" type="number" name="searchMin" value="@(ViewBag.currentDurationMin is null ? ViewBag.MinDuration : ViewBag.currentDurationMin)" placeholder="Set min duration" min="@ViewBag.MinDuration" max="@ViewBag.MaxDuration" />
+        <input class="form-control col-3" type="number" name="searchMin" value="@(ViewBag.currentDurationMax is null ? ViewBag.MaxDuration : ViewBag.currentDurationMax)" placeholder="Set max duration" min="@ViewBag.MinDuration" max="@ViewBag.MaxDuration" />
+
+        <input class="form-control col-2" type="text" name="searchFirstName" value="@ViewBag.currentTitle" placeholder="Search Title" />
+        <input class="btn btn-outline-primary btn-group-sm" type="submit" name="name" value="Search Course" />
+    </form>
+</div>
+    <br />
+    <table class="table table-hover table-striped table-light table-responsive-md text-center">
+        <tr>
+        <thead class="thead-dark">
+            <tr>
+                <th>@Html.ActionLink("#", "Index", "Course", new { sortOrder = ViewBag.IdSortParam }, null)</th>
+                <th>@Html.ActionLink("Title", "Index", "Course", new { sortOrder = ViewBag.TitleSortParam }, null)</th>
+                <th>@Html.ActionLink("Duration", "Index", "Course", new { sortOrder = ViewBag.DurationSortParam }, null)</th>
+                <th>@Html.ActionLink("Field", "Index", "Course", new { sortOrder = ViewBag.FieldSortParam }, null)</th>
+                <th>@Html.ActionLink("Trainers", "Index", "Course", new { sortOrder = ViewBag.TrainersSortParam }, null)</th>
+                <th>Trainers</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.Id</td>
+                    <td>@course.Title</td>
+                    <td>@course.Duration</td>
+                    <td>Field</td>
+                    <td>
+                        <ul class="small list-unstyled">
+                            @foreach (var trainer in course.Trainers)
+                            {
+                                <li> @trainer.FirstName @trainer.LastName</li>
+                            }
+                        </ul>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div class="btn-group">
+                            <div class="p-sm-1">
+                                <a href="/course/Details?id=@course.Id" class="btn btn-outline-info btn-sm">Details</a>
+                            </div>
+                            <div class="p-sm-1">
+                                <a href="/course/Edit?id=@course.Id" class="btn btn-outline-warning btn-sm">Edit</a>
+                            </div>
+                            <div class="p-sm-1">
+                                <a href="/course/Delete?id=@course.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <div>
+        @Html.ActionLink("Go back", "Index", "Home", null, new { @class = "btn btn-sm btn-secondary" })
+    </div>

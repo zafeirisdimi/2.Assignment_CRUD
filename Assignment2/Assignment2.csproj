@@ -134,7 +134,9 @@
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CustomValidations\MyValidationMethods.cs" />
     <Compile Include="Models\Enum\Country.cs" />
+    <Compile Include="Models\Enum\Field.cs" />
     <Compile Include="Models\Queries\StudentSearchQuery.cs" />
+    <Compile Include="Models\Queries\CourseSearchQuery.cs" />
     <Compile Include="Models\Queries\TrainerSearchQuery.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Trainer.cs" />
@@ -281,10 +283,11 @@
     <Content Include="webfonts\fa-brands-400.ttf" />
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\Shared\Error2.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Course\" />
     <Folder Include="Views\Shared\Components\Footer\" />
     <Folder Include="Views\Shared\Components\Navigation\" />
   </ItemGroup>

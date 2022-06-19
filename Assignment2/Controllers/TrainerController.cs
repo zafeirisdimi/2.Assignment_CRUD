@@ -148,7 +148,7 @@ namespace Assignment2.Controllers
             return View(trainer);
         }
 
-        [HandleError(ExceptionType = typeof(ArgumentException), View = "~/Views/Shared/Error/cshtml")]
+        [HandleError(ExceptionType = typeof(ArgumentException), View = "~/Views/Shared/Error1/cshtml")]
         [HandleError(ExceptionType = typeof(ArgumentNullException), View = "~/Views/Shared/Error2/cshtml")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -178,12 +178,7 @@ namespace Assignment2.Controllers
             return View(trainer);
         }
 
-        public ActionResult Edit()
-        {
-            return View();
-        }
-
-
+        
 
         [HttpPost]
         public ActionResult Delete(int? id)

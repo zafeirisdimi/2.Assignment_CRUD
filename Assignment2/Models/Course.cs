@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment2.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace Assignment2.Models
 
         [Range(30,360)]
         public int Duration { get; set; }
+
+        public Field? Category { get; set; }
+
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public Course()
         {

@@ -1,0 +1,59 @@
+﻿@model Assignment2.Models.Course
+@using Assignment2.Models.Enum
+@using Assignment2.Models
+
+<div class="container">
+    <div class="card-header">
+        <h2><span class="badge badge-info"> Details of @Model.Title</span></h2>
+    </div>
+
+    <div class="main ">
+        <table class="table table-responsive-md">
+            <thead class="thead-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Duration</th>
+                    <th>Field</th>
+                    <th>DateStart</th>
+                    <th>DateEnd</th>
+                    <th>Country</th>
+                    <th>Student</th>
+                    <th>Hired(y/m/d)</th>
+                    <th>Teachers</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Id</td>
+                    <td>@Model.Title</td>
+                    <td>@Model.Duration</td>
+                    <td>@Model.Category</td>
+                    <td>@Model.StartDate.ToString("yyyy/m/d")</td>
+                    <td>@Model.EndDate.ToString("yyyy/m/d")</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td></td>
+                    <td>
+                        <ul class="small list-unstyled">
+                            @foreach (var trainer in Model.Trainers)
+                            {
+                                <li class="small text-sm-center">@trainer.FirstName @trainer.LastName</li>
+                            }
+                        </ul>
+                    </td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        @Html.ActionLink("Go back", "Index", "Trainer", null, new { @class = "btn btn-sm btn-secondary", title = "back" })
+    </div>
+</div>
+
