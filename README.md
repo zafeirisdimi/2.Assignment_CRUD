@@ -87,7 +87,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | 
 | int         | Salary       | 
 
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
 -------------------------------------------------------------------------------------------------------------------
 
 ## Interfaces ##
@@ -114,7 +114,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | PhoneNumber       | get, set    |
 | int         | Salary       | get, set    |
 
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
 ------------------------------------------------------------------------------------------------------------------
 ## View ##
 
@@ -131,7 +131,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ------------------------------------------------------------------------------------------------------------------
 ### Delete ###
 -
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
 ------------------------------------------------------------------------------------------------------------------
 ## Controller ##
 ### TrainerController ###
@@ -159,4 +159,4 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 - [Boostrap 4](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
 
-##### [Back to >Top<](#assignment2_crud) #####
+##### [🔙🏠](#assignment2_crud) #####
