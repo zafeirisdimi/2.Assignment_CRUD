@@ -58,28 +58,41 @@
                 @Html.EnumDropDownListFor(m => m.Country, new { @class = "form-control" })
             </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-5">
-                    <label for="studentId" class="form-check-label col-1"> Student:</label>
-                    <select name="studentId" class="form-control col-8">
-                        <option value="">None</option>
-                        @foreach (var stu in ViewBag.Students as List<Student>)
+        <div class="form-row">
+            <div class="form-group col-5">
+                <label for="studentId" class="form-check-label col-md-3"> Select Student:</label>
+                <select name="studentId" class="form-control col-8">
+                    <option value="">None</option>
+                    @foreach (var stu in ViewBag.Students as List<Student>)
+                    {
+                        if (stu.Id == Model.Id)
                         {
-                            if (stu.Id == Model.Id)
-                            {
-                                <option selected value="@stu.Id">@stu.FirstName @stu.LastName</option>
-                            }
-                            else
-                            {
-                                <option selected value="@stu.Id">@stu.FirstName @stu.LastName</option>
-                            }
+                            <option selected value="@stu.Id">@stu.FirstName @stu.LastName</option>
                         }
-                    </select>
-                </div>
+                        else
+                        {
+                            <option selected value="@stu.Id">@stu.FirstName @stu.LastName</option>
+                        }
+                    }
+                </select>
             </div>
+            <div class="form-group col-5">
+                <label for="studentId" class="form-check-label col-3"> Select Courses:</label>
+                <select name="studentId" class="form-control col-8" multiple>
+                    <option value="">None</option>
+                    @foreach (var course in ViewBag.Courses as List<Course>)
+                    {
+                        <option value="@course.Id" @(Model.Courses.Any(c=>c.Id == course.Id) ? "selected" : ""))>@course.Title</option>
+
+                    }
+                </select>
+            </div>
+        </div>
             <div class="form-group">
                 <input class="btn btn-primary mb-2" type="submit" name="name" value="Update" />
                 <input class="btn btn-danger mb-2" type="reset" name="name" value="Clear" />
             </div>
     </form>
-    
+    <div>
+        @Html.ActionLink("Go back", "Index", "Trainer", null, new { @class = "btn btn-sm btn-secondary", title = "back" })
+    </div>

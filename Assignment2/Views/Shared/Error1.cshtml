@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<style>
+    body {
+        background: #f83636;
+        color: white;
+    }
+
+    h1 {
+        font: 6em Roboto;
+    }
+    h2 {
+        display: inline-block;
+        margin: .2em 3rem;
+        font: 3em Roboto;
+    }
+</style>
+
+<body>
+    <hgroup>
+        <h1><i class="fa-solid fa-triangle-exclamation"></i> Error</h1>
+        <h2>An error occurred while processing your request.</h2>
+        <p>Go @Html.ActionLink("Homepage", "Index", "Home", null, new { @class = "btn btn-sm btn-secondary", title = "back to Home" })</p>
+    </hgroup>
+</body>
+</html>

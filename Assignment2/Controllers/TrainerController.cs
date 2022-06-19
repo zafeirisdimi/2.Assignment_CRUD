@@ -148,22 +148,15 @@ namespace Assignment2.Controllers
             return View(trainer);
         }
 
-
+        [HandleError(ExceptionType = typeof(ArgumentException), View = "~/Views/Shared/Error/cshtml")]
+        [HandleError(ExceptionType = typeof(ArgumentNullException), View = "~/Views/Shared/Error2/cshtml")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Trainer trainer, List<int> coursesIds)
         {
             if (ModelState.IsValid) //Back End Validation
             {
-                try
-                {
-                    trainerRepository.Edit(trainer,coursesIds);
-                }
-                catch (Exception)
-                {
-
-                    
-                }
+                trainerRepository.Edit(trainer,coursesIds);
                 ShowAlert($" You have successfully updated trainer with name: {trainer.FirstName} {trainer.LastName} and id: {trainer.Id}");
                 return RedirectToAction("Index");
             }

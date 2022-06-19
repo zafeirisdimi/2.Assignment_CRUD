@@ -76,23 +76,28 @@ namespace Assignment2.Repository
             db.SaveChanges();
         }
 
+
         public void Edit(Trainer train,List<int> coursesIds)
         {
+            if (train == null)
+            {
+                throw new ArgumentNullException("Error, this trainer is not coming");
+            }
             //step 1) asked from database, do you have this trainer with this.id?
             //and the tables with trainers included needed
-            var trainer = db.Trainers.
+            var trainer = db.Trainers.//attached mode
                 Include(x=>x.Student).
                 Include(x=>x.Courses).
                 FirstOrDefault(x=>x.Id == train.Id);
+            
+            //check the trainer and train is not null
             if(trainer == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Error, it is not found trainer");
             }
-            if (train == null)
-            {
-                throw new ArgumentNullException();
-            }
-
+            
+            
+            //you have employee and emp for sure!!!
             //step 1b) Data Mapping
             trainer.FirstName = train.FirstName;
             trainer.LastName = train.LastName;
@@ -102,7 +107,8 @@ namespace Assignment2.Repository
             trainer.Country = train.Country;
             trainer.Salary = train.Salary;
             trainer.Phone = train.Phone;
-            trainer.Student = train.Student;
+            trainer.StudentId = train.StudentId;
+            
 
             //step 2) Clean the old table of trainers
             trainer.Courses.Clear();
