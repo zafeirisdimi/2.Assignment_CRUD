@@ -147,11 +147,11 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 ## Installation ##
 
 
-## Technologies ##
+## Technologies and Tools ##
 
 - [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
 - [Entity Framework](https://docs.microsoft.com/en-us/ef/ef6/)
-- ![ASP.NET MVC Pattern](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc))
+- [ASP.NET MVC Pattern](https://dotnet.microsoft.com/en-us/apps/aspnet/mvc))
 - [Visual Studio Community Edition](https://visualstudio.microsoft.com/vs/community/)
 - [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 - [HTML](https://www.w3schools.com/html/)
