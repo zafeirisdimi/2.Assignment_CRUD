@@ -19,7 +19,7 @@
     <a href="/Trainer/Create" class="btn btn-success col-md-2" target="_self" title="Add new Trainer in your list"><i class="fa-solid fa-plus"></i> Add new Teacher</a>
 </div>
 <div>
-    <button id="filtersBtn" class="btn btn-block col-md-2">Show Filters</button>
+    <button id="filtersBtn" class="btn col-md-2 btn-sm"><i class="fa-regular fa-square-caret-down fa-xl"></i>&nbsp;&nbsp; Show Filters</button>
 </div>
 <div id="filters" class="form-group align-content-sm-center">
     <form class="form-row p-1">
@@ -66,7 +66,7 @@
 {
 
     <div>
-        <h1 class="alert bg-danger text-black-50">No Trainer exist</h1>
+        <h1 class="alert bg-danger text-black-50"><i class="fa-solid fa-circle-xmark fa-xl"></i>No Trainer exist</h1>
     </div>
 }
 else
@@ -82,7 +82,7 @@ else
             <thead class="thead-dark ">
                 <tr>
                     <th>@Html.ActionLink("#", "Index", "Trainer", new { sortOrder = ViewBag.IdSortParam }, null)</th>
-                    <th><i class="fa-solid fa-file-image"></i></th>
+                    <th><i class="fa-solid fa-file-image img-thumbnail"></i></th>
                     <th>@Html.ActionLink("FirstName", "Index", "Trainer", new { sortOrder = ViewBag.FirstNameSortParam, searchFirstName = ViewBag.currentFirstName, searchCountry = ViewBag.currentCountry, searchSalaryMin = ViewBag.currentSalaryMin, searchSalaryMax = ViewBag.currentSalaryMax }, null)</th>
                     <th>@Html.ActionLink("LastName", "Index", "Trainer", new { sortOrder = ViewBag.LastNameSortParam }, null)</th>
                     <th><i class="fa-solid fa-mobile-screen"></i></th>
@@ -99,16 +99,16 @@ else
                 @foreach (var trainer in Model)
                 {
                     <tr>
-                        <td>@trainer.Id</td>
-                        <td><img src="@trainer.PhotoUrl" width="30" alt="@trainer.FirstName+''+@trainer.LastName" /></td>
-                        <td>@trainer.FirstName</td>
-                        <td>@trainer.LastName</td>
-                        <td>@trainer.Phone</td>
-                        <td>@trainer.Salary</td>
-                        <td>@trainer.Email</td>
-                        <td>@trainer.Country</td>
-                        <td>@trainer.HireDate.ToString("yyyy/MM/dd")</td>
-                        <td>
+                        <td class="align-middle">@trainer.Id</td>
+                        <td class="align-middle"><img src="@trainer.PhotoUrl" width="30" alt="@trainer.FirstName+''+@trainer.LastName" /></td>
+                        <td class="align-middle">@trainer.FirstName</td>
+                        <td class="align-middle">@trainer.LastName</td>
+                        <td class="align-middle">@trainer.Phone</td>
+                        <td class="align-middle">@trainer.Salary</td>
+                        <td class="align-middle">@trainer.Email</td>
+                        <td class="align-middle">@trainer.Country</td>
+                        <td class="align-middle">@trainer.HireDate.ToString("yyyy/MM/dd")</td>
+                        <td class="align-middle">
                             <ul class="small list-unstyled">
                                 <li>@trainer.Student.FirstName @trainer.Student.LastName</li>
                             </ul>
@@ -121,19 +121,19 @@ else
                                 }
                             </ul>
                         </td>
-                        <td>
+                        <td class="align-middle">
                             <div class="btn-group">
                                 <div class="p-sm-1">
-                                    <a href="/trainer/Details?id=@trainer.Id" class="btn btn-info btn-sm"><i class="fa-solid fa-info"></i> Details</a>
+                                    <a href="/trainer/Details?id=@trainer.Id" class="btn btn-info btn-sm" title="Details"><i class="fa-solid fa-info"></i></a>
                                 </div>
                                 <div class="p-sm-1">
-                                    <a href="/trainer/Edit?id=@trainer.Id" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                                    <a href="/trainer/Edit?id=@trainer.Id" class="btn btn-warning btn-sm" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
                                 </div>
                                 <div class="p-sm-1">
                                     <form action="/trainer/delete" method="post">
                                         @Html.AntiForgeryToken()
                                         <input type="hidden" name="id" value="@trainer.Id" />
-                                        <input class="btn btn-danger btn-sm" type="submit" value=" Delete" />
+                                        <input class="btn btn-danger btn-sm" type="submit" title="Delete"value="Delete" />
                                     </form>
                                 </div>
                             </div>
@@ -165,6 +165,7 @@ else
                 let keimeno = $("#filtersBtn").text();
 
                 $("#filtersBtn").text(keimeno == "Show Filters" ? "Hide Filters" : "Show Filters");
+                $("#filtersBtn").addClass("btn-outline-light");
 
             }
 
