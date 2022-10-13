@@ -4,18 +4,18 @@
 
 -----------------------------------------------------
 
-# Assignment2_CRUD #
+# CRUD #
 
 You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</strong> using <strong>MVC</strong> methodologies for the entity <strong>Trainers</strong>.
 
-<details><summary><h2> Tasks </h2></summary>
+<details><summary><h2> Requirements </h2></summary>
 <p><h3>You    need    to    submit    all    the    produced    files    in    a    zip    file    named    by your_name_individual_partb.zip</h3>
 <ul>
-    <li> <h3>Create Trainer [20marks]</h3> </li>
-    <li> <h3>Read Trainer details [20marks] </h3> </li>
-    <li> <h3>Update Trainer details [20marks]</h3></li>
-    <li> <h3>Delete Trainer [20marks] </h3></li>
-    <li> <h3>Use of MVC technologies [20marks]</h3></li>
+    <li> <h4>Create Trainer [20marks]</h3> </li>
+    <li> <h4>Read Trainer details [20marks] </h3> </li>
+    <li> <h4>Update Trainer details [20marks]</h3></li>
+    <li> <h4>Delete Trainer [20marks] </h3></li>
+    <li> <h4>Use of MVC technologies [20marks]</h3></li>
   </ul>
 </p>
 </details>
@@ -30,7 +30,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 <!--ts-->
 
 
-- [Assignment2_CRUD](#assignment2_crud)
+- [CRUD](#crud)
  - [ApplicationDatabase](#applicationdatabase)
     - [ApplicationContext](#applicationcontext)
  - [Migrations](#migrations)
@@ -241,7 +241,9 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ##### [🔙🏠](#assignment2_crud) #####
 ------------------------------------------------------------------------------------------------------------------
-## Views ##
+# Views #
+
+
 ## TrainerView ##
 
 #### Methods ####
@@ -259,18 +261,9 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | GetCourses         | PhoneNumber       | 
 | GetStudents        | Salary       | 
 
-### Create ###
--
-------------------------------------------------------------------------------------------------------------------
-### Read ###
--
 
 ##### [Back to >Top<](#assignment2_crud) #####
 ------------------------------------------------------------------------------------------------------------------
-### Edit ###
--
-------------------------------------------------------------------------------------------------------------------
-### Delete ###
 
 ## StudentView ##
 
@@ -289,9 +282,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | GetCourses         | PhoneNumber       | 
 | GetStudents        | Salary       | 
 
-### Create ###
-### Read ###
-### Edit ###
+
 
 ##### [🔙🏠](#assignment2_crud) #####
 
@@ -312,17 +303,12 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | GetCourses         | PhoneNumber       | 
 | GetStudents        | Salary       | 
 
-### Create ###
--
-------------------------------------------------------------------------------------------------------------------
-### Read ###
--
+
 
 ##### [🔙🏠](#assignment2_crud) #####
 
 ------------------------------------------------------------------------------------------------------------------
-### Edit ###
--
+
 
 ## AssignmentView ##
 
@@ -341,15 +327,12 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | GetCourses         | PhoneNumber       | 
 | GetStudents        | Salary       | 
 
-### Create ###
-### Read ###
-### Edit ###
-### Delete ###
 
 ##### [🔙🏠](#assignment2_crud) #####
 
 ------------------------------------------------------------------------------------------------------------------
-## Controller ##
+# Controllers #
+
 ### TrainerController ###
 
 | Method           | Properties       | Methods |
@@ -390,10 +373,9 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | Action         | PhoneNumber       | get, set    |
 | Action         | Salary       | get, set    |
 
-## Installation ##
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-## Technologies and Tools ##
+# Technologies and Tools #
 
 - [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
 - [Entity Framework](https://docs.microsoft.com/en-us/ef/ef6/)
