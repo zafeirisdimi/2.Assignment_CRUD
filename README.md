@@ -116,6 +116,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 ##### [🔙🏠](#assignment2_crud) #####
 
+
 ### Student ###
 
 | Type           | Properties       | Methods | Required | Min| Max | 
@@ -149,6 +150,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | string         | Catergory       | get, set    |☑️| 10 | 20 |
 | List Trainer | Trainers | get,set | ☑️ | 1 | no-limit
 
+
 #### Validation Error Messages ####
 
 | ErrorMessageCode         | ErrorMessage       | 
@@ -161,6 +163,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 
 
 ##### [🔙🏠](#assignment2_crud) #####
+
 
 ### Assignment ###
 
@@ -183,6 +186,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | int         | Salary       | 
 
 ##### [🔙🏠](#assignment2_crud) #####
+
 -------------------------------------------------------------------------------------------------------------------
 
 ## Interfaces ##
@@ -240,6 +244,7 @@ You  are  required  to  produce  a  solution  that  implements a <strong>CRUD</s
 | int         | Salary       | get, set    |
 
 ##### [🔙🏠](#assignment2_crud) #####
+
 ------------------------------------------------------------------------------------------------------------------
 # Views #
 
